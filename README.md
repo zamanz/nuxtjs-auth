@@ -1,4 +1,4 @@
-# nuxtauth
+# nuxt authentication
 
 ## Build Setup
 
