@@ -40,7 +40,7 @@
         head:{
             title: 'Login'
         },
-
+        middleware:'guest',
         data(){
             return {
                 form: {
