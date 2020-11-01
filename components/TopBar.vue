@@ -23,7 +23,7 @@
                                 <nuxt-link class="nav-link" to="/profile">{{ $auth.user.name }}</nuxt-link>
                             </li>
                             <li class="nav-item" v-if="$auth.loggedIn">
-                                <a href="#" class="nav-link" @click="$auth.logout()">Logout</a>
+                                <a href="" class="nav-link" @click.prevent="$auth.logout()">Logout</a>
                             </li>
                         </ul>
                     </div>

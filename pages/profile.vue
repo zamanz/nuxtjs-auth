@@ -1,6 +1,8 @@
 <template>
     <div class="container">
-        {{ $auth.user}}
+        <pre>
+            user:{{ $auth.user}}
+        </pre>
     </div>
 </template>
 
