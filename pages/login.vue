@@ -3,6 +3,12 @@
         <div class="login">
             <div class="card">
                 <div class="card-body">
+                    <div class="social-btn">
+                        <button class="btn btn-outline-success d-block btn-block" @click="loginFacebook">Login With Facebook</button>
+                        <button class="btn btn-outline-danger d-block btn-block" @click="loginGoogle">Login With Google</button>
+                        <button class="btn btn-outline-info d-block btn-block" @click="loginGithub">Login With Github</button>
+                    </div>
+
                     <p class="login-box-msg text-center">Sign in to start your session</p>
                     <form @submit.prevent="login">
                         <div class="form-group mb-3">
@@ -27,11 +33,7 @@
                             <!-- /.col -->
                         </div>
                     </form>
-                    <div class="social-btn">
-                        <button class="btn btn-outline-success" @click="loginFacebook">Login With Facebook</button>
-                        <button class="btn btn-outline-danger" @click="loginFacebook">Login With Google</button>
-                        <button class="btn btn-outline-info" @click="loginGithub">Login With Github</button>
-                    </div>
+
                 </div>
                 <!-- /.login-card-body -->
             </div>
@@ -77,6 +79,10 @@ export default {
         loginGithub() {
             this.$auth.loginWith('github')
             this.$router.push('/profile')
+        },
+        loginGoogle(){
+            this.$auth.loginWith('google')
+            this.$router.push('/profile')
         }
     },
 }
@@ -85,11 +91,14 @@ export default {
 <style>
 .login {
     margin: 0 auto;
-    width: 600px;
+    width: 50%;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.login .card{
+    width: 100%;
 }
 
 .social-btn {

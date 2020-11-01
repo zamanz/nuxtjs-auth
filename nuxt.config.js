@@ -59,17 +59,15 @@ export default {
                 tokenName:'Authorization'
             },
             facebook: {
-                // endpoints: {
-                //     authorization: 'https://facebook.com/v2.12/dialog/oauth',
-                //     userInfo: 'https://graph.facebook.com/v2.12/me?fields=about,name,picture{url},email,birthday'
-                // },
                 client_id: '672111516771724',
                 client_secret:'8a23357938450747a907d695b5957367',
-                scope: ['public_profile', 'email', 'user_birthday'],
             },
             github: {
                 client_id: 'd9810f8ceaee1badb42d',
                 client_secret: 'c55b5428a0611fc680893b8603b63d8a7e0bd6ff'
+            },
+            google: {
+                client_id: '847620353260-5qj0hpo06bcf4228nitofeu6ogc5ouq8.apps.googleusercontent.com'
             },
         },
         redirect: {
