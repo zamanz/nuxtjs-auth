@@ -1,41 +1,48 @@
 <template>
-    <div>
-        <div class="login">
-            <div class="card">
-                <div class="card-body">
-                    <div class="social-btn">
-                        <button class="btn btn-outline-success d-block btn-block" @click="loginFacebook">Login With Facebook</button>
-                        <button class="btn btn-outline-danger d-block btn-block" @click="loginGoogle">Login With Google</button>
-                        <button class="btn btn-outline-info d-block btn-block" @click="loginGithub">Login With Github</button>
-                    </div>
+    <div class="full-wrapper">
+        <div class="wrapper">
+            <!-- Alert message -->
+            <!--<div class="alert alert-danger">
+               Incorrect username or password.
+           </div>-->
+           <!-- End: Alert message -->
 
-                    <p class="login-box-msg text-center">Sign in to start your session</p>
-                    <form @submit.prevent="login">
-                        <div class="form-group mb-3">
-                            <label for="email">email address</label>
-                            <input id="email" type="email" class="form-control" v-model="form.email"
-                                   placeholder="Email Address">
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="password">password</label>
-                            <input id="password" type="password" class="form-control" v-model="form.password"
-                                   placeholder="Password" autocomplete="current-password">
-                        </div>
-                        <div class="row">
-                            <!-- /.col -->
-                            <div class="col-sm-12">
-                                <button type="submit" class="btn btn-outline-success btn-block" v-if="!isLoading">
-                                    Login
-                                </button>
-                                <button type="button" class="btn btn-primary btn-block disable" v-else>Loading</button>
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                    </form>
-
+            <!-- Title -->
+            <h2 class="mt-4">Sign In</h2>
+            <!-- End: title -->
+            <!-- Sign in form -->
+            <form @submit.prevent="login()">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                    <input type="text" name="email" class="form-control" v-model="form.email" placeholder="Username or email" required>
                 </div>
-                <!-- /.login-card-body -->
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    <input type="password" name="password" class="form-control" v-model="form.password" placeholder="Password" required>
+                    <a href="#" class="pass-eye" @click="show()"><i class="fas fa-eye"></i></a>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <label class="form-check-label" for="flexCheckChecked">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-block mt-3 signin-btn">Sign In</button>
+            </form>
+            <!-- End: Sign in form -->
+
+            <!-- sign in text -->
+            <a href="">Forgot password</a>
+            <p class="mt-2">Don't have an account? <a href="">Sign Up</a></p>
+            <!-- End: sign In text -->
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-info btn-sm" @click="loginFacebook">Facebook</button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-danger btn-sm" @click="loginGoogle">Google</button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-success btn-sm" @click="loginGithub">Github</button>
+                </div>
             </div>
         </div>
     </div>
@@ -52,7 +59,7 @@ export default {
         return {
             form: {
                 email: 'zaman@gmail.com',
-                password: '1234',
+                password: '123456',
             },
             isLoading: false
         }
@@ -68,7 +75,8 @@ export default {
                     }
                 })
                 await this.$router.push('/profile')
-            } catch (e) {
+            }
+            catch (e) {
                 console.log('Error: ' + e)
             }
         },

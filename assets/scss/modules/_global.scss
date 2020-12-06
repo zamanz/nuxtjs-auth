@@ -1,0 +1,163 @@
+// Start Global style ===========================>
+body{
+    // typography
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    a{
+        text-decoration: none;
+        font-size: 15px;
+    }
+    hr{
+        margin: 0;
+    }
+    .container-fluid{
+        padding: 0 20px;
+    }
+
+    p{
+        font-size: 15px;
+    }
+
+
+
+    // Main bar ===============>
+    .mainbar{
+        margin-left: 15%;
+        transition: $ts;
+        @media screen and (max-width: 1200px) {
+            margin-left: 20%;
+          }
+        @media screen and (max-width: 992px) {
+            margin-left: 25%;
+          }
+        @media screen and (max-width: 768px) {
+            margin-left: 0;
+          }
+    }
+    .mainbar-active{
+        margin-left: 0 !important;
+    }
+
+    // Page body ================>
+    .page-body{
+        min-height: 520px;
+    }
+
+
+    // Footer ===================>
+    footer{
+        border-top: 1px solid rgba(128, 128, 128, 0.267);
+        padding: 10px 0;
+        p{
+            margin-bottom: 0;
+        }
+    }
+
+    // Main title ===================>
+    .main-title{
+        margin-bottom: 20px;
+        h2{
+            margin: 0;
+            font-size: 26px;
+        }
+    }
+
+
+
+    // Form Related ===============>
+    *:focus{
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    .btn{
+        padding:2px .75rem;
+        border-radius: 3px;
+    }
+    .btn-sm{
+        font-size: 12px;
+        padding: 2px 5px;
+    }
+    .form-control, .form-select, .input-group-text{
+        padding: 3px 10px;
+        min-height: 20px;
+        font-size: 15px;
+        border-radius: 0;
+    }
+    .form-select{
+        height: 30px;
+    }
+    .form-label{
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+    textarea{
+        min-height: auto;
+        resize: none;
+    }
+
+
+
+    // Alert ==================>
+    .alert{
+        border-radius: 0;
+        border: none;
+    }
+
+
+
+
+    // Table ===================>
+    .table{
+        margin-bottom: 10px;
+        border-bottom: 1px solid #eee;
+        @media print{
+            border-bottom: none;
+        }
+        thead{
+            border: 0;
+        }
+        th,td{
+            padding: 3px 1rem !important;
+            font-size: 15px;
+        }
+        tbody, td, tfoot, th, thead, tr{
+            border: none;
+        }
+    }
+
+
+
+    // Card ===================>
+    .card{
+        border-radius: 0;
+    }
+
+
+    // Modal ===================>
+    .modal-content{
+        border-radius: 0;
+        .modal-header, .modal-footer{
+            padding: .3rem 1rem ;
+        }
+    }
+
+
+    // Pagination
+    .pagination{
+        margin-bottom: 10px;
+        .page-item{
+            .page-link{
+                background-color: #d6dbdf;
+                color: $sc;
+                &:hover{
+                    background-color: $sc;
+                    color: $wc;
+                }
+            }
+        }
+    }
+}
+// End Global style   ===========================>

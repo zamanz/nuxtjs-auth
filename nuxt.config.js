@@ -10,7 +10,8 @@ export default {
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-            { rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' }
+            { rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' },
+            { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.15.1/css/all.css' }
         ],
         script: [
             { src: 'https://code.jquery.com/jquery-3.5.1.slim.min.js' },
@@ -21,6 +22,7 @@ export default {
 
     // Global CSS (https://go.nuxtjs.dev/config-css)
     css: [
+        '@assets/scss/master.scss'
     ],
 
     // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -43,7 +45,7 @@ export default {
 
     // Axios module configuration (https://go.nuxtjs.dev/config-axios)
     axios: {
-        baseURL:'http://passport-laravel.test/api'
+        baseURL:'http://passport-api.test/api'
     },
 
     auth: {

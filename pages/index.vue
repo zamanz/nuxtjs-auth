@@ -1,7 +1,16 @@
 <template>
     <div class="container">
-        <div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam autem consectetur consequatur corporis dolorem, ducimus esse facere harum illo ipsum itaque laboriosam maxime odit perferendis possimus repellat soluta totam!lorem   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid aperiam blanditiis delectus ducimus eveniet explicabo id illum ipsa libero mollitia numquam odit officiis, quae quaerat quo sequi totam vitae.
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">Dashboard</div>
+                    <div class="card-body">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet assumenda, at blanditiis consequatur laudantium, minus modi molestiae obcaecati officia optio placeat praesentium quae qui velit? Eius expedita minus quo?
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -10,7 +19,7 @@
 
 export default {
     name:'home',
-    // middleware:'auth',
+    middleware:'auth',
 }
 </script>
 

@@ -1,0 +1,9 @@
+// Mixin ==================================>
+// Flex-box
+@mixin f-box($ai: flex-start, $jc: flex-start, $fw: nowrap, $fd: row) {
+    display: flex;
+    align-items: $ai;
+    justify-content: $jc;
+    flex-wrap: $fw;
+    flex-direction: $fd;
+}
