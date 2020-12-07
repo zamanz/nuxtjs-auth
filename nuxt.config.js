@@ -45,7 +45,7 @@ export default {
 
     // Axios module configuration (https://go.nuxtjs.dev/config-axios)
     axios: {
-        baseURL:'http://passport-api.test/api'
+        baseURL:'http://blog-api.test/api/v1'
     },
 
     auth: {

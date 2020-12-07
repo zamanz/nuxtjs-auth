@@ -59,7 +59,7 @@ export default {
         return {
             form: {
                 email: 'zaman@gmail.com',
-                password: '123456',
+                password: '12345678',
             },
             isLoading: false
         }
@@ -91,6 +91,18 @@ export default {
         loginGoogle(){
             this.$auth.loginWith('google')
             this.$router.push('/profile')
+        },
+        show() {
+            let input = document.getElementsByName("password")[0],
+                type = input.getAttribute("type");
+
+            if(type === "password") {
+                input.type = "text";
+                document.querySelector('.fa-eye').classList.add("fa-eye-slash");
+            } else {
+                input.type = "password";
+                document.querySelector('.fa-eye').classList.remove("fa-eye-slash");
+            }
         }
     },
 }
