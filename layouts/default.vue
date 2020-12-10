@@ -1,15 +1,15 @@
 <template>
   <div>
-      <HeaderComponent/>
       <Nuxt />
-      <FooterComponent/>
+      <SpinnerComponent v-if="isLoading"/>
   </div>
 </template>
 
 <script>
-import HeaderComponent from "~/components/partials/HeaderComponent";
-import FooterComponent from "~/components/partials/FooterComponent";
+import { mapState } from 'vuex';
 export default {
-    components: {FooterComponent, HeaderComponent}
+    computed: {
+        ...mapState('loading', ['isLoading'])
+    },
 }
 </script>

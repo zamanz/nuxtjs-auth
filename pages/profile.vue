@@ -1,8 +1,21 @@
 <template>
-    <div class="container">
-        <pre>
-            user:{{ $auth.user}}
-        </pre>
+    <div>
+        <HeaderComponent/>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">Profile</div>
+                        <div class="card-body">
+                            <pre>
+                                {{ $auth.user}}
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </template>
 

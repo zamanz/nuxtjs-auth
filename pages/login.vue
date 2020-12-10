@@ -74,11 +74,13 @@ export default {
                         password: this.form.password
                     }
                 })
+                enablePreloader: true, // enable prelaoder
                 await this.$router.push('/profile')
             }
             catch (e) {
                 console.log('Error: ' + e)
             }
+            
         },
         loginFacebook() {
             this.$auth.loginWith('facebook')
