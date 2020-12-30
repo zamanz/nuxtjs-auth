@@ -49,7 +49,7 @@ export default {
 
     // Axios module configuration (https://go.nuxtjs.dev/config-axios)
     axios: {
-        baseURL:'http://blog-api.test/api/v1'
+        baseURL:'https://api.kzaman.me/api/v1'
     },
 
     auth: {
