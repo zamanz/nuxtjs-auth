@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt --hostname 0.0.0.0 --port 5000",
+    "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate"
@@ -12,7 +12,6 @@
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.12.2",
     "core-js": "^3.6.5",
-    "cross-env": "^7.0.3",
     "konva": "^7.2.0",
     "nanoid": "^2.1.11",
     "nuxt": "^2.14.6",
