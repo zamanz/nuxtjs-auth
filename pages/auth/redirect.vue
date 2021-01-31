@@ -12,7 +12,7 @@
                 token: this.$route.query.token ?? null
             }
         },
-        mounted(){
+        created(){
             console.log("Token " + this.token);
             this.$auth.setToken('local', 'Bearer ' + this.token);
             this.$auth.setStrategy('local')
