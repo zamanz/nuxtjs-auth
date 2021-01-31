@@ -1,5 +1,6 @@
 <template>
   <div>
+      <HeaderComponent/>
       <Nuxt />
       <SpinnerComponent v-if="isLoading"/>
   </div>
