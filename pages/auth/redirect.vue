@@ -17,20 +17,12 @@
             this.$auth.setToken('local', 'Bearer ' + this.token);
             this.$auth.setStrategy('local')
             this.$auth.fetchUser().then(() =>{
+                this.$router.push('/profile')
                 console.log(this.$auth.user);
-                return this.$router.push('/profile')
             }).catch((error) => {
                 this.$auth.logout()
                 console.log(error);
             })
-
-            // this.$auth.fetchUser().then((response) =>{
-            //     return this.$router.push('/profile')
-            //     console.log(response);
-            // }).catch((error) => {
-            //     this.$auth.logout()
-            //     console.log(error);
-            // })
         }
     }
 </script>
