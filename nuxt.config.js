@@ -49,7 +49,7 @@ export default {
 
     // Axios module configuration (https://go.nuxtjs.dev/config-axios)
     axios: {
-        baseURL:'https://api.kzaman.me/api/v1'
+        baseURL:'http://nuxt-socialite.test/api/v1'
     },
 
     auth: {
@@ -57,27 +57,18 @@ export default {
         strategies: {
             local: {
                 endpoints: {
-                    login: { url: '/login', method: 'post', propertyName: 'access_token' },
-                    logout: { url: '/logout', method: 'post', propertyName: false },
-                    user: { url: '/user', method: 'get', propertyName: 'user' }
+                    login: { url: '/auth/login', method: 'post', propertyName: 'token' },
+                    logout: { url: '/auth/logout', method: 'post', propertyName: false },
+                    user: { url: '/auth/user', method: 'get', propertyName: 'user' }
                 },
                 tokenType: 'Bearer',
                 tokenName:'Authorization'
             },
-            facebook: {
-                client_id: '672111516771724',
-                client_secret:'8a23357938450747a907d695b5957367',
-            },
-            github: {
-                client_id: 'd9810f8ceaee1badb42d',
-                client_secret: 'c55b5428a0611fc680893b8603b63d8a7e0bd6ff'
-            },
-            google: {
-                client_id: '847620353260-5qj0hpo06bcf4228nitofeu6ogc5ouq8.apps.googleusercontent.com'
-            },
+
         },
         redirect: {
-            login: '/login'
+            login: '/login',
+            home: '/'
         }
     },
 
@@ -85,7 +76,6 @@ export default {
     build: {
     },
     server:{
-        host: '0.0.0.0',
-        port: '5000'
+        host: '0.0.0.0'
     }
 }

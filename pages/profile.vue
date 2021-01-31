@@ -1,6 +1,5 @@
 <template>
     <div>
-        <HeaderComponent/>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -21,7 +20,10 @@
 
 <script>
 export default {
-    name: "profile",
+    name: "ProfileComponent",
+    head:{
+        title:"Profile"
+    },
     middleware:'auth'
 }
 </script>

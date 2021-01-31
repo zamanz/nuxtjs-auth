@@ -34,14 +34,12 @@
             <p class="mt-2">Don't have an account? <a href="">Sign Up</a></p>
             <!-- End: sign In text -->
             <div class="row">
-                <div class="col-md-4">
-                    <button class="btn btn-info btn-sm" @click="loginFacebook">Facebook</button>
+                <div class="col-md-6">
+                    <button class="btn btn-primary" @click="loginFacebook">Facebook</button>
                 </div>
-                <div class="col-md-4">
-                    <button class="btn btn-danger btn-sm" @click="loginGoogle">Google</button>
-                </div>
-                <div class="col-md-4">
-                    <button class="btn btn-success btn-sm" @click="loginGithub">Github</button>
+
+                <div class="col-md-6">
+                    <button class="btn btn-danger" @click="loginGoogle">Google</button>
                 </div>
             </div>
         </div>
@@ -59,7 +57,7 @@ export default {
         return {
             form: {
                 email: 'zaman@gmail.com',
-                password: '12345678',
+                password: '123456',
             },
             isLoading: false
         }
@@ -83,16 +81,11 @@ export default {
             
         },
         loginFacebook() {
-            this.$auth.loginWith('facebook')
-            this.$router.push('/profile')
+            window.open('http://nuxt-socialite.test/api/v1/auth/redirect/facebook', '_blank');
         },
-        loginGithub() {
-            this.$auth.loginWith('github')
-            this.$router.push('/profile')
-        },
+
         loginGoogle(){
-            this.$auth.loginWith('google')
-            this.$router.push('/profile')
+            window.open('http://nuxt-socialite.test/api/v1/auth/redirect/google', '_blank');
         },
         show() {
             let input = document.getElementsByName("password")[0],
