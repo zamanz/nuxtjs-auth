@@ -22,7 +22,7 @@
                     <a href="#" class="pass-eye" @click="show()"><i class="fas fa-eye"></i></a>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" required>
                     <label class="form-check-label" for="flexCheckChecked">Remember me</label>
                 </div>
                 <button type="submit" class="btn btn-block mt-3 signin-btn">Sign In</button>
@@ -73,7 +73,7 @@ export default {
                     }
                 })
                 enablePreloader: true, // enable prelaoder
-                await this.$router.push('/profile')
+                await this.$router.push('/dashboard')
             }
             catch (e) {
                 console.log('Error: ' + e)
@@ -81,11 +81,11 @@ export default {
             
         },
         loginFacebook() {
-            window.open('http://nuxt-socialite.test/api/v1/auth/redirect/facebook', '_blank');
+            window.open(process.env.baseURL + '/auth/redirect/facebook', '_blank');
         },
 
         loginGoogle(){
-            window.open('http://nuxt-socialite.test/api/v1/auth/redirect/google', '_blank');
+            window.open(process.env.baseURL + '/auth/redirect/google', '_blank');
         },
         show() {
             let input = document.getElementsByName("password")[0],

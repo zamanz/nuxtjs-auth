@@ -20,9 +20,9 @@
 
 <script>
 export default {
-    name: "ProfileComponent",
+    name: "Dashboard",
     head:{
-        title:"Profile"
+        title:"Dashboard"
     },
     middleware:'auth'
 }

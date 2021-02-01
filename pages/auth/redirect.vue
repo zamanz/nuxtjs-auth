@@ -18,7 +18,7 @@
             this.$auth.setToken('local', 'Bearer ' + this.token);
             this.$auth.setStrategy('local')
             this.$auth.fetchUser().then(() =>{
-                return this.$router.push('/profile')
+                return this.$router.push('/dashboard')
             }).catch((error) => {
                 this.$auth.logout()
                 console.log(error);

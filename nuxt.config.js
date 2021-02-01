@@ -77,5 +77,8 @@ export default {
     },
     server:{
         host: '0.0.0.0'
+    },
+    env:{
+        baseURL:'http://nuxt-socialite.test/api/v1'
     }
 }
