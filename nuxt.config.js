@@ -2,27 +2,24 @@
 export default {
     // Global page headers (https://go.nuxtjs.dev/config-head)
     head: {
-        title: 'nuxt auth',
+        title: 'Simple Nuxt Auth',
         meta: [
             { charset: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { hid: 'description', name: 'description', content: '' }
+            { name: 'viewport', content: 'width=device-width, initial-scale=1' }
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-            { rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' },
-            { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.15.1/css/all.css' }
+            { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.15.1/css/all.css' },
+            { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css' },
         ],
         script: [
-            { src: 'https://code.jquery.com/jquery-3.5.1.slim.min.js' },
-            { src: 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' },
-            { src: 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js' }
+            { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js' }
         ],
     },
 
     // Global CSS (https://go.nuxtjs.dev/config-css)
     css: [
-        '@assets/scss/master.scss'
+        '~assets/scss/master.scss'
     ],
 
     // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -44,7 +41,8 @@ export default {
     modules: [
         // https://go.nuxtjs.dev/axios
         '@nuxtjs/axios',
-        '@nuxtjs/auth'
+        '@nuxtjs/auth',
+        'nuxt-i18n',
     ],
 
     // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -71,10 +69,30 @@ export default {
             home: '/'
         }
     },
+    i18n: {
+        strategy: 'prefix_and_default',
+        locales: [
+            {
+                code: 'en',
+                name: 'English',
+                file: 'en-US.js'
+            },
+            {
+                code: 'bn',
+                name: 'বাংলা',
+                file: 'bn-BD.js'
+            },
+        ],
+        defaultLocale: 'en',
+        langDir: 'language/',
+        lazy: true,
+        vueI18n: {
+            fallbackLocale: 'en',
+        }
+    },
 
     // Build Configuration (https://go.nuxtjs.dev/config-build)
-    build: {
-    },
+    build: {},
     server:{
         host: '0.0.0.0'
     },

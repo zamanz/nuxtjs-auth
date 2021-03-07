@@ -7,14 +7,14 @@
                         <ul class="navbar-nav" v-if="$auth.loggedIn">
 
                             <li class="nav-item" v-if="$auth.loggedIn">
-                                <nuxt-link class="nav-link" to="/">Home</nuxt-link>
+                                <nuxt-link class="nav-link" :to="localePath('/')">{{ $t('header.home') }}</nuxt-link>
                             </li>
 
                             <li class="nav-item" v-if="$auth.loggedIn">
-                                <nuxt-link class="nav-link" to="/dashboard">{{ $auth.user.name }}</nuxt-link>
+                                <nuxt-link class="nav-link" :to="localePath('/dashboard')">{{ $t('header.profile') }}</nuxt-link>
                             </li>
                             <li class="nav-item" v-if="$auth.loggedIn">
-                                <a href="" class="nav-link" @click.prevent="$auth.logout()">Logout</a>
+                                <a href="#" class="nav-link" @click.prevent="$auth.logout()">{{ $t('header.logout') }}</a>
                             </li>
                         </ul>
 
@@ -26,6 +26,21 @@
                                 <nuxt-link href="#" class="nav-link" to="/register">Register</nuxt-link>
                             </li>
                         </ul>
+
+                        <div class="dropdown">
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ currentLocal.name }}
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li
+                                    v-for="(local, index) in availableLocales"
+                                    :key="index">
+                                    <nuxt-link class="dropdown-item" :to="switchLocalePath(local.code)">
+                                        {{ local.name }}
+                                    </nuxt-link>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </nav>
             </div>
@@ -35,7 +50,16 @@
 
 <script>
 export default {
-name: "HeaderComponent"
+    name: "HeaderComponent",
+    computed: {
+        availableLocales () {
+            return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
+        },
+        currentLocal(){
+            let current_local = this.$i18n.locales.filter(i => i.code == this.$i18n.locale);
+            return current_local[0];
+        }
+    }
 }
 </script>
 

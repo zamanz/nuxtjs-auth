@@ -4,11 +4,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">Dashboard</div>
+                        <div class="card-header">{{ $t('dashboard.title') }}</div>
                         <div class="card-body">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet assumenda, at blanditiis consequatur laudantium, minus modi molestiae obcaecati officia optio placeat praesentium quae qui velit? Eius expedita minus quo?
-                            </p>
+                            <p>{{ $t('dashboard.content') }}</p>
                         </div>
                     </div>
                 </div>
