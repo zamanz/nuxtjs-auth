@@ -20,6 +20,9 @@
 export default {
     name:'home',
     middleware:'auth',
+    mounted(){
+        console.log(process.env.NODE_ENV);
+    }
 }
 </script>
 

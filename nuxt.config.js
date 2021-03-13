@@ -1,8 +1,8 @@
-
+require('dotenv').config();
 export default {
     // Global page headers (https://go.nuxtjs.dev/config-head)
     head: {
-        title: 'Simple Nuxt Auth',
+        title: 'Simple Nuxt Demo Project',
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' }
@@ -41,13 +41,14 @@ export default {
     modules: [
         // https://go.nuxtjs.dev/axios
         '@nuxtjs/axios',
+        '@nuxtjs/dotenv',
         '@nuxtjs/auth',
         'nuxt-i18n',
     ],
 
     // Axios module configuration (https://go.nuxtjs.dev/config-axios)
     axios: {
-        baseURL:'http://nuxt-socialite.test/api/v1'
+        baseURL: process.env.BASE_URL
     },
 
     auth: {
@@ -95,8 +96,5 @@ export default {
     build: {},
     server:{
         host: '0.0.0.0'
-    },
-    env:{
-        baseURL:'http://nuxt-socialite.test/api/v1'
     }
 }
