@@ -11,7 +11,7 @@
                             </li>
 
                             <li class="nav-item" v-if="$auth.loggedIn">
-                                <nuxt-link class="nav-link" :to="localePath('/dashboard')">{{ $t('header.profile') }}</nuxt-link>
+                                <nuxt-link class="nav-link" :to="localePath('/user')">{{ $t('header.profile') }}</nuxt-link>
                             </li>
                             <li class="nav-item" v-if="$auth.loggedIn">
                                 <a href="#" class="nav-link" @click.prevent="$auth.logout()">{{ $t('header.logout') }}</a>
@@ -23,7 +23,7 @@
                                 <nuxt-link class="nav-link" to="/login">Login</nuxt-link>
                             </li>
                             <li class="nav-item">
-                                <nuxt-link href="#" class="nav-link" to="/register">Register</nuxt-link>
+                                <nuxt-link class="nav-link" to="/register">Register</nuxt-link>
                             </li>
                         </ul>
 

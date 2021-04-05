@@ -21,7 +21,7 @@
                     <input type="password" name="password" class="form-control" v-model="form.password" placeholder="Password" required>
                     <a href="#" class="pass-eye" @click="show()"><i class="fas fa-eye"></i></a>
                 </div>
-                <button type="submit" class="btn btn-block mt-3 signin-btn">Sign In</button>
+                <button type="submit" class="btn btn-block w-100 mt-3 pb-2 signin-btn">Sign In</button>
             </form>
             <!-- End: Sign in form -->
 
@@ -52,8 +52,8 @@ export default {
     data() {
         return {
             form: {
-                email: 'zaman@gmail.com',
-                password: '123456',
+                email: 'zaman7u@gmail.com',
+                password: '12345678',
             },
             isLoading: false
         }
