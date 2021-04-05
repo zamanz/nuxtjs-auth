@@ -48,12 +48,13 @@ export default {
 
     // Axios module configuration (https://go.nuxtjs.dev/config-axios)
     axios: {
-        baseURL: process.env.BASE_URL
+        baseURL: process.env.API_URL
     },
 
     auth: {
         // Options
         strategies: {
+            
             local: {
                 endpoints: {
                     login: { url: '/auth/login', method: 'post', propertyName: 'token' },
@@ -84,7 +85,7 @@ export default {
                 file: 'bn-BD.js'
             },
         ],
-        defaultLocale: 'en',
+        defaultLocale: 'bn',
         langDir: 'language/',
         lazy: true,
         vueI18n: {
@@ -95,6 +96,6 @@ export default {
     // Build Configuration (https://go.nuxtjs.dev/config-build)
     build: {},
     server:{
-        host: '0.0.0.0'
+        host: ''
     }
 }

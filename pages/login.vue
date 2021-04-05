@@ -8,7 +8,7 @@
            <!-- End: Alert message -->
 
             <!-- Title -->
-            <h2 class="mt-4">Sign In</h2>
+            <h2 class="mt-5">Sign In</h2>
             <!-- End: title -->
             <!-- Sign in form -->
             <form @submit.prevent="login()">
@@ -20,10 +20,6 @@
                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                     <input type="password" name="password" class="form-control" v-model="form.password" placeholder="Password" required>
                     <a href="#" class="pass-eye" @click="show()"><i class="fas fa-eye"></i></a>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" required>
-                    <label class="form-check-label" for="flexCheckChecked">Remember me</label>
                 </div>
                 <button type="submit" class="btn btn-block mt-3 signin-btn">Sign In</button>
             </form>
