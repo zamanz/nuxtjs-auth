@@ -18,8 +18,7 @@
 <script>
 
 export default {
-    name:'home',
-    middleware:'auth',
+    name:'HomeComponent',
     mounted(){
         console.log(process.env.NODE_ENV);
     }

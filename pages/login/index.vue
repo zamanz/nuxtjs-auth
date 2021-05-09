@@ -1,41 +1,30 @@
 <template>
-    <div class="full-wrapper">
-        <div class="wrapper">
-            <!-- Alert message -->
-            <!--<div class="alert alert-danger">
-               Incorrect username or password.
-           </div>-->
-           <!-- End: Alert message -->
 
-            <!-- Title -->
-            <h2 class="mt-5">Sign In</h2>
-            <!-- End: title -->
-            <!-- Sign in form -->
-            <form @submit.prevent="login()">
-                <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
-                    <input type="text" name="email" class="form-control" v-model="form.email" placeholder="Username or email" required>
-                </div>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-key"></i></span>
-                    <input type="password" name="password" class="form-control" v-model="form.password" placeholder="Password" required>
-                    <a href="#" class="pass-eye" @click="show()"><i class="fas fa-eye"></i></a>
-                </div>
-                <button type="submit" class="btn btn-block w-100 mt-3 pb-2 signin-btn">Sign In</button>
-            </form>
-            <!-- End: Sign in form -->
-
-            <!-- sign in text -->
-            <a href="">Forgot password</a>
-            <p class="mt-2">Don't have an account? <a href="">Sign Up</a></p>
-            <!-- End: sign In text -->
-            <div class="row">
-                <div class="col-md-6">
-                    <button class="btn btn-primary" @click="loginFacebook">Facebook</button>
-                </div>
-
-                <div class="col-md-6">
-                    <button class="btn btn-danger" @click="loginGoogle">Google</button>
+    <div class="container">
+        <div class="justify-content-center d-flex align-items-center vh-100">
+            <div class="col-md-5 col-sm-12">
+                <div class="w-100">
+                    <div class="card">
+                        <div class="card-header">Login</div>
+                        <div class="card-body">
+                            <form @submit.prevent="login()">
+                                <div class="form-group mt-2">
+                                    <label for="email">Email Addrsss:</label>
+                                    <input type="text" name="email" class="form-control" id="email" v-model="form.email" placeholder="Username or email" required>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="password">Password:</label>
+                                    <input type="password" name="password" id="password" class="form-control" v-model="form.password" placeholder="Password" required>
+                                </div>
+                                <p class="btn btn-link text-decoration-none text-dark px-0" @click.prevent="show()" id="show_password">Show password</p>
+                                <button type="submit" class="btn btn-success w-100 signin-btn">Sign In</button>
+                            </form>
+                        </div>
+                        <div class="card-footer text-center align-items-center">
+                            <button class="btn btn-primary" @click="loginFacebook">Facebook</button>
+                            <button class="btn btn-danger" @click="loginGoogle">Google</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,11 +57,10 @@ export default {
                         password: this.form.password
                     }
                 })
-                enablePreloader: true, // enable prelaoder
-                await this.$router.push('/dashboard')
+                await this.$router.push('/profile')
             }
-            catch (e) {
-                console.log('Error: ' + e)
+            catch (error) {
+                console.log(error.response)
             }
             
         },
@@ -89,10 +77,10 @@ export default {
 
             if(type === "password") {
                 input.type = "text";
-                document.querySelector('.fa-eye').classList.add("fa-eye-slash");
+                document.getElementById('show_password').innerHTML="Hide password";
             } else {
                 input.type = "password";
-                document.querySelector('.fa-eye').classList.remove("fa-eye-slash");
+                document.getElementById('show_password').innerHTML="Show password";
             }
         }
     },

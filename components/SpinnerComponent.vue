@@ -1,6 +1,6 @@
 <template>
     <div class="preloader">
-        <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status"></div>
+        <div class="spinner-border text-success" style="width: 3rem; height: 3rem;" role="status"></div>
     </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
     left: 0;
     top: 0;
     z-index: 1050;
-    background: rgba(0, 0, 0, .3);
+    //background: rgba(0, 0, 0, 0);
     display: flex;
     align-items: center;
     justify-content: center;
