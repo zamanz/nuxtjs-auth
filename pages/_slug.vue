@@ -1,42 +1,48 @@
 <template>
+    <!-- Page Content -->
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Post List</div>
-                    <div class="card-body">
-                        <!-- Blog Post -->
-                        <div class="card mb-4" v-for="post in posts" :key="post.id">
-                            <img class="card-img-top" :src="post.image" alt="Card image cap">
-                            <div class="card-body">
-                                <h3 class="card-title">{{ post.title }}</h3>
-                                <p class="card-text">{{ post.description }}</p>
-                                <nuxt-link :to="`/${post.slug}`" class="btn btn-success">Read More &rarr;</nuxt-link>
-                            </div>
-                            <div class="card-footer text-muted">
-                                Posted on {{ post.posted }} by
-                                <a href="#">{{ post.user.name }}</a>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <div class="spinner-border text-success" role="status" v-if="isLoding">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Post Content Column -->
+            <div class="col-lg-8">
+                <div class="single-post">
+                    <!-- Title -->
+                    <h1 class="mt-4">{{ post.title }}</h1>
+
+                    <!-- Author -->
+                    <p class="lead">by<a href="#">{{ post.user? post.user.name:'' }}</a></p>
+                    <hr />
+                    <!-- Date/Time -->
+                    <p>Posted on {{ post.posted }}</p>
+                    <hr />
+                    <!-- Preview Image -->
+                    <img
+                        class="img-fluid rounded"
+                        :src="post.image"
+                        alt=""
+                    />
+                    <hr />
+                    <!-- Post Content -->
+                    <p class="lead" v-html="post.body"></p>
+
                 </div>
             </div>
+
             <!-- Sidebar Widgets Column -->
             <div class="col-md-4">
-
                 <!-- Search Widget -->
-                <div class="card mb-4">
+                <div class="card my-4">
                     <h5 class="card-header">Search</h5>
                     <div class="card-body">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for...">
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Search for..."
+                            />
                             <span class="input-group-append">
-                                <button class="btn btn-secondary" type="button">Go!</button>
+                                <button class="btn btn-secondary" type="button">
+                                    Go!
+                                </button>
                             </span>
                         </div>
                     </div>
@@ -81,50 +87,61 @@
                 <div class="card my-4">
                     <h5 class="card-header">Side Widget</h5>
                     <div class="card-body">
-                        You can put anything you want inside of these side widgets. They are easy to use, and feature
-                        the new Bootstrap 4 card containers!
+                        You can put anything you want inside of these side
+                        widgets. They are easy to use, and feature the new
+                        Bootstrap 4 card containers!
                     </div>
                 </div>
-
             </div>
         </div>
+        <!-- /.row -->
     </div>
+    <!-- /.container -->
 </template>
 
 <script>
-
 export default {
-    name:'PostsComponent',
+    name:'SinglePostComponent',
     data(){
         return {
+            post: {},
             posts: [],
-            next_page: 2,
+            next: {},
             isLoding: false
         }
     },
     beforeMount(){
-        this.getInitialPosts();
+        this.getInitialPost();
     },
     mounted(){
-        window.addEventListener('scroll', this.getNextPosts)
+        //window.addEventListener('scroll', this.getNextPost)
     },
     methods:{
-        getInitialPosts() {
-            this.$axios.$get('/posts').then((response) => {
-                this.posts = response.posts.data;
+        getInitialPost() {
+            this.$axios.$get('/post?slug=' + this.$route.params.slug).then((response) => {
+                this.post = response.post;
+                this.next = response.next;
+                console.log(response)
             });
         },
-        getNextPosts() {
+        getNextPost() {
             let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
             if (bottomOfWindow) {
                 this.isLoding = true;
-                let page = this.next_page++;
-                this.$axios.$get('/posts?page='+ page).then((response) => {
-                    this.posts.push(...response.posts.data)
-                    this.isLoding = false;
-                });
+                if(this.next.slug){
+                    this.$axios.$get('/post?slug=' + this.next.slug).then((response) => {
+                        this.posts.push(response.post)
+                        this.next = response.next
+                        this.$router.replace('/'+response.next.slug)
+                        this.isLoding = false;
+                        console.log(this.posts)
+                    });
+                }
+                
             }
         }
     }
-}
+};
 </script>
+
+<style lang="scss" scoped></style>

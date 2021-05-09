@@ -2,6 +2,7 @@
   <div>
       <HeaderComponent/>
       <Nuxt />
+      <FooterComponent/>
       <SpinnerComponent v-if="isLoading"/>
   </div>
 </template>

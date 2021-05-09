@@ -42,6 +42,9 @@ export default {
         '@nuxtjs/dotenv',
         'bootstrap-vue/nuxt',
     ],
+    bootstrapVue: {
+        icons: false
+    },
 
     // Axios module configuration (https://go.nuxtjs.dev/config-axios)
     axios: {
@@ -82,7 +85,7 @@ export default {
                 file: 'bn-BD.js'
             },
         ],
-        defaultLocale: 'bn',
+        defaultLocale: 'en',
         langDir: 'language/',
         lazy: true,
         vueI18n: {
@@ -91,7 +94,11 @@ export default {
     },
 
     // Build Configuration (https://go.nuxtjs.dev/config-build)
-    build: {},
+    build: {
+        babel: {
+            compact: true
+        }
+    },
     server:{
         host: ''
     }

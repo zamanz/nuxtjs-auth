@@ -1,12 +1,8 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card text-center">
-                    <div class="card-footer text-muted">
-                        2 days ago
-                    </div>
-                </div>
+    <div class="container mt-2">
+        <div class="card text-center">
+            <div class="card-footer text-muted">
+                Last update 2 days ago
             </div>
         </div>
     </div>
