@@ -4,7 +4,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Post List</div>
-                    <div class="card-body">
+                    <div class="card-body" v-if="posts.length > 0">
                         <!-- Blog Post -->
                         <div class="card mb-4" v-for="post in posts" :key="post.id">
                             <img class="card-img-top" :src="post.image" alt="Card image cap">
@@ -21,6 +21,22 @@
                         <div class="d-flex justify-content-center">
                             <div class="spinner-border text-success" role="status" v-if="isLoding">
                                 <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" v-else>
+                        <div class="card" v-for="(item, index) in 6" :key="index">
+                            <div class="card-img-top">
+                                <b-skeleton-img></b-skeleton-img>
+                            </div>
+                            
+                            <div class="card-body">
+                                <h3 class="card-title"><b-skeleton width="85%"></b-skeleton></h3>
+                                <p class="card-text"><b-skeleton width="85%"></b-skeleton></p>
+                                <b-skeleton width="10%"></b-skeleton>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <b-skeleton width="85%"></b-skeleton>
                             </div>
                         </div>
                     </div>

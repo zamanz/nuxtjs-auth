@@ -4,27 +4,56 @@
         <div class="row">
             <!-- Post Content Column -->
             <div class="col-lg-8">
-                <div class="single-post">
-                    <!-- Title -->
-                    <h1 class="mt-4">{{ post.title }}</h1>
+                <div class="single-post card">
+                    <div class="card-body">
+                        <!-- Title -->
+                        <h1 class="mt-4" v-if="post.title">{{ post.title }}</h1>
+                        <b-skeleton width="85%" v-else></b-skeleton>
 
-                    <!-- Author -->
-                    <p class="lead">by<a href="#">{{ post.user? post.user.name:'' }}</a></p>
-                    <hr />
-                    <!-- Date/Time -->
-                    <p>Posted on {{ post.posted }}</p>
-                    <hr />
-                    <!-- Preview Image -->
-                    <img
-                        class="img-fluid rounded"
-                        :src="post.image"
-                        alt=""
-                    />
-                    <hr />
-                    <!-- Post Content -->
-                    <p class="lead" v-html="post.body"></p>
-
+                        <!-- Author -->
+                        <p class="lead" v-if="post.user">by<a href="#">{{ post.user.name }}</a></p>
+                        <b-skeleton width="50%" v-else></b-skeleton>
+                        
+                        <hr />
+                        <!-- Date/Time -->
+                        <p v-if="post.posted">Posted on {{ post.posted }}</p>
+                        <b-skeleton width="30%" v-else></b-skeleton>
+                        <hr />
+                        <!-- Preview Image -->
+                        <img
+                            class="img-fluid rounded"
+                            :src="post.image"
+                            alt=""
+                            v-if="post.image"
+                        />
+                        <b-skeleton-img v-else></b-skeleton-img>
+                        <hr />
+                        <!-- Post Content -->
+                        <p class="lead" v-if="post.body" v-html="post.body"></p>
+                        <div v-else>
+                            <b-skeleton width="100%"></b-skeleton>
+                            <b-skeleton width="100%"></b-skeleton>
+                            <b-skeleton width="100%"></b-skeleton>
+                            <b-skeleton width="100%"></b-skeleton>
+                            <b-skeleton width="100%"></b-skeleton>
+                        </div>
+                    </div>
                 </div>
+                <!-- Pagination -->
+                <ul class="pagination justify-content-center my-4">
+                    <li class="page-item" v-if="prev">
+                        <a class="page-link" href="#" @click.prevent="Prev">&larr; Older</a>
+                    </li>
+                    <li class="page-item disabled" v-else>
+                        <a class="page-link" href="#">&larr; Older</a>
+                    </li>
+                    <li class="page-item" v-if="next">
+                        <a class="page-link" href="#" @click.prevent="Next">Newer &rarr;</a>
+                    </li>
+                    <li class="page-item disabled" v-else>
+                        <a class="page-link" href="#">&larr; Older</a>
+                    </li>
+                </ul>
             </div>
 
             <!-- Sidebar Widgets Column -->
@@ -107,6 +136,7 @@ export default {
             post: {},
             posts: [],
             next: {},
+            prev: {},
             isLoding: false
         }
     },
@@ -114,31 +144,22 @@ export default {
         this.getInitialPost();
     },
     mounted(){
-        //window.addEventListener('scroll', this.getNextPost)
+        window.addEventListener('scroll', this.getNextPost)
     },
     methods:{
         getInitialPost() {
             this.$axios.$get('/post?slug=' + this.$route.params.slug).then((response) => {
                 this.post = response.post;
                 this.next = response.next;
+                this.prev = response.prev
                 console.log(response)
             });
         },
-        getNextPost() {
-            let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
-            if (bottomOfWindow) {
-                this.isLoding = true;
-                if(this.next.slug){
-                    this.$axios.$get('/post?slug=' + this.next.slug).then((response) => {
-                        this.posts.push(response.post)
-                        this.next = response.next
-                        this.$router.replace('/'+response.next.slug)
-                        this.isLoding = false;
-                        console.log(this.posts)
-                    });
-                }
-                
-            }
+        Prev(){
+            this.$router.push('/'+this.prev.slug)
+        },
+        Next() {
+            this.$router.push('/'+this.next.slug)
         }
     }
 };
