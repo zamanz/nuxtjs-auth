@@ -23,8 +23,8 @@
                                 </div>
 
                                 <div class="form-group my-3">
-                                    <label for="password">Confirm Password:</label>
-                                    <input id="password" type="password" class="form-control" v-model="form.password_confirmation" placeholder="Confirm Password">
+                                    <label for="password_confirmation">Confirm Password:</label>
+                                    <input id="password_confirmation" type="password" class="form-control" v-model="form.password_confirmation" placeholder="Confirm Password">
                                 </div>
                                 
                                 <button type="submit" class="btn btn-success w-100" v-if="!isLoading">Register</button>

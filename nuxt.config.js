@@ -45,10 +45,25 @@ export default {
         // https://go.nuxtjs.dev/axios
         'nuxt-i18n',
         '@nuxtjs/auth',
+        '@nuxtjs/toast',
         '@nuxtjs/axios',
         '@nuxtjs/dotenv',
         'bootstrap-vue/nuxt',
     ],
+    toast: {
+        position: 'top-center',
+        fitToScreen:true,
+        duration : 2000,
+        register: [ // Register custom toasts
+          {
+            name: 'my-error',
+            message: 'Oops...Something went wrong',
+            options: {
+              type: 'error'
+            }
+          }
+        ]
+    },
     bootstrapVue: {
         icons: false
     },

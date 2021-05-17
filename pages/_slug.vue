@@ -107,21 +107,21 @@
                     <div class="col-lg-8 col-md-12">
                         <h4 class="text-center"><b>POST COMMENT</b></h4>
                         <div class="comment-form">
-                            <form method="post">
+                            <form method="post" @submit.prevent="onCommentSubmit">
                                 <div class="row">
 
                                     <div class="col-sm-6">
-                                        <input type="text" aria-required="true" name="contact-form-name" class="form-control"
+                                        <input type="text" aria-required="true" v-model="form.name" name="contact-form-name" class="form-control"
                                             placeholder="Enter your name" aria-invalid="true" required >
                                     </div><!-- col-sm-6 -->
                                     <div class="col-sm-6">
-                                        <input type="email" aria-required="true" name="contact-form-email" class="form-control"
+                                        <input type="email" aria-required="true" v-model="form.email" name="contact-form-email" class="form-control"
                                             placeholder="Enter your email" aria-invalid="true" required>
                                     </div><!-- col-sm-6 -->
 
                                     <div class="col-sm-12">
-                                        <textarea name="contact-form-message" rows="2" class="text-area-messge form-control"
-                                            placeholder="Enter your comment" aria-required="true" aria-invalid="false"></textarea >
+                                        <textarea name="contact-form-message" v-model="form.body" rows="2" class="text-area-messge form-control"
+                                            placeholder="Enter your comment" required></textarea >
                                     </div><!-- col-sm-12 -->
                                     <div class="col-sm-12">
                                         <button class="submit-btn" type="submit" id="form-submit"><b>POST COMMENT</b></button>
@@ -131,29 +131,32 @@
                             </form>
                         </div><!-- comment-form -->
 
-                        <h4><b>COMMENTS(12)</b></h4>
+                        <h4><b>COMMENTS({{ post.comments ? post.comments.length : 0 }})</b></h4>
 
                         <div class="commnets-area">
 
-                            <div class="comment" v-for="(comment) in post.comments" :key="comment.id">
+                            <div class="comment" v-for="(comment, index) in post.comments" :key="comment.id">
 
                                 <div class="post-info">
 
                                     <div class="left-area">
                                         <a class="avatar" href="#">
-                                            <img v-if="post.user" :src="`https://ui-avatars.com/api/?background=random&name=${comment.user.name}`" alt="Profile Image">
+                                            <img v-if="comment.user" :src="`https://ui-avatars.com/api/?background=random&name=${comment.user.name}`" alt="Profile Image">
                                             <b-skeleton type="avatar" v-else></b-skeleton>
                                         </a>
                                         
                                     </div>
 
                                     <div class="middle-area">
-                                        <a class="name" href="#" v-if="post.user"><b>{{ comment.user.name }}</b></a>
+                                        <a class="name" href="#" v-if="comment.user"><b>{{ comment.user.name }}</b></a>
                                         <h6 class="date">on Sep 29, 2017 at 9:48 am</h6>
                                     </div>
 
                                     <div class="right-area">
-                                        <h5 class="reply-btn"><a href="#"><b>REPLY</b></a></h5>
+                                        <h5 class="reply-btn"><a href="#">Reply</a></h5>
+                                        <h5 class="reply-btn" v-if="comment.user.id === $auth.user.id">
+                                            <a href="#" @click.prevent="deleteComment(comment, index)">Delete</a>
+                                        </h5>
                                     </div>
 
                                 </div><!-- post-info -->
@@ -181,10 +184,17 @@
 <script>
 export default {
     name:'SinglePostComponent',
+    
     data(){
         return {
+            form:{
+                post_id: '',
+                user_id: this.$auth.user.id,
+                name: this.$auth.user.name,
+                email: this.$auth.user.email,
+                body:''
+            },
             post: {},
-            posts: [],
             next: {},
             prev: {},
             isLoding: false
@@ -194,15 +204,17 @@ export default {
         this.getInitialPost();
     },
     mounted(){
-        window.addEventListener('scroll', this.getNextPost)
+        //window.addEventListener('scroll', this.getNextPost)
     },
     methods:{
         getInitialPost() {
-            this.$axios.$get('/post?slug=' + this.$route.params.slug).then((response) => {
+            this.$axios.$get('/post?slug=' + this.$route.params.slug).then(response => {
                 this.post = response.post;
                 this.next = response.next;
-                this.prev = response.prev
-                console.log(response)
+                this.prev = response.prev,
+                this.form.post_id = response.post.id
+            }).catch(error =>{
+                console.log(error);
             });
         },
         Prev(){
@@ -210,6 +222,32 @@ export default {
         },
         Next() {
             this.$router.push('/'+this.next.slug)
+        },
+        onCommentSubmit(){
+            if(this.$auth.loggedIn){
+                this.$axios.$post('/comment', this.form).then(response => {
+                    this.post.comments.push(response)
+                    console.log('response',response)
+                    this.$toast.success('Comment Success')
+                }).catch(error =>{
+                    console.log(error);
+                });
+            }
+            else{
+                this.$toast.error('You must logging in...')
+            }
+        },
+        deleteComment(comment, index){
+            if(confirm('Are you sure?')){
+                this.$axios.$post('/comment', {id:comment.id}).then(response => {
+                    this.post.comments.splice(index, 1)
+
+                    console.log('response',response)
+                    this.$toast.success('Comment successfully delete')
+                }).catch(error =>{
+                    console.log(error);
+                });
+            }
         }
     }
 };
