@@ -51,9 +51,9 @@ export default {
     data(){
         return {
             form: {
-                name:'Zaman',
-                email: 'zaman@gmail.com',
-                password: '123456',
+                name:'',
+                email: '',
+                password: '',
                 password_confirmation:'',
             },
             isLoading : false

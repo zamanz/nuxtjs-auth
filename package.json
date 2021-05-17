@@ -12,7 +12,7 @@
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/dotenv": "^1.4.1",
-    "bootstrap": "^5.0.0",
+    "bootstrap": "^4.0.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "express": "^4.17.1",

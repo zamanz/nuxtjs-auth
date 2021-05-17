@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div class="slider"></div><!-- slider -->
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -19,22 +20,5 @@
 
 export default {
     name:'HomeComponent',
-    mounted(){
-        console.log(process.env.NODE_ENV);
-    }
 }
 </script>
-
-<style>
-.subtitle {
-    font-weight: 300;
-    font-size: 30px;
-    color: #526488;
-    word-spacing: 5px;
-    padding-bottom: 15px;
-}
-
-.links {
-    padding-top: 15px;
-}
-</style>

@@ -20,9 +20,9 @@
                                 <button type="submit" class="btn btn-success w-100 signin-btn">Sign In</button>
                             </form>
                         </div>
-                        <div class="card-footer text-center align-items-center">
-                            <button class="btn btn-primary" @click="loginFacebook">Facebook</button>
-                            <button class="btn btn-danger" @click="loginGoogle">Google</button>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <button class="btn btn-primary w-50 mx-1" @click="loginFacebook">Facebook</button>
+                            <button class="btn btn-danger w-50 mx-1" @click="loginGoogle">Google</button>
                         </div>
                     </div>
                 </div>
@@ -40,6 +40,7 @@ export default {
     middleware: 'guest',
     data() {
         return {
+            errors: [],
             form: {
                 email: 'zaman7u@gmail.com',
                 password: '12345678',
@@ -60,16 +61,17 @@ export default {
                 await this.$router.push('/profile')
             }
             catch (error) {
-                console.log(error.response)
+                this.errors = error.response.data.errors;
+                console.log(this.errors)
             }
             
         },
         loginFacebook() {
-            window.open(process.env.baseURL + '/auth/redirect/facebook', '_blank');
+            window.open(process.env.baseURL + '/auth/redirect/facebook');
         },
 
         loginGoogle(){
-            window.open(process.env.baseURL + '/auth/redirect/google', '_blank');
+            window.open(process.env.baseURL + '/auth/redirect/google');
         },
         show() {
             let input = document.getElementsByName("password")[0],

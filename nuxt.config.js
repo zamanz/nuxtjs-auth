@@ -9,14 +9,21 @@ export default {
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+            { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500' },
         ],
         script: [
-            { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js' }
+            { src: 'https://code.jquery.com/jquery-3.2.1.slim.min.js' },
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' },
+            { src: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' },
         ],
     },
 
     // Global CSS (https://go.nuxtjs.dev/config-css)
-    css: [],
+    css: [
+        '~/assets/css/ionicons.min.css',
+        '~/assets/css/style.css',
+        '~/assets/css/responsive.css',
+    ],
 
     // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
     plugins: [

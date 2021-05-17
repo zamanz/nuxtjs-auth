@@ -1,110 +1,78 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Post List</div>
-                    <div class="card-body" v-if="posts.length > 0">
-                        <!-- Blog Post -->
-                        <div class="card mb-4" v-for="post in posts" :key="post.id">
-                            <img class="card-img-top" :src="post.image" alt="Card image cap">
-                            <div class="card-body">
-                                <h3 class="card-title">{{ post.title }}</h3>
-                                <p class="card-text">{{ post.description }}</p>
-                                <nuxt-link :to="`/${post.slug}`" class="btn btn-success">Read More &rarr;</nuxt-link>
+    <section class="blog-area section">
+        <div class="container">
+            <div class="row" v-if="posts.length > 0" ref="postList">
+                <div class="col-lg-4 col-md-6" v-for="(post) in posts" :key="post.id">
+                    <div class="card h-100">
+                        <div class="single-post post-style-1">
+
+                            <div class="blog-image">
+                                <img :src="post.image" v-if="post.image" alt="Blog Image" loading="lazy">
+                                <b-skeleton-img v-else></b-skeleton-img>
                             </div>
-                            <div class="card-footer text-muted">
-                                Posted on {{ post.posted }} by
-                                <a href="#">{{ post.user.name }}</a>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <div class="spinner-border text-success" role="status" v-if="isLoding">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
+
+                            <a class="avatar" href="#">
+                                <img :src="`https://ui-avatars.com/api/?background=random&name=${post.user.name}`" alt="Profile Image">
+                            </a>
+
+                            <div class="blog-info">
+
+                                <h4 class="title">
+                                    <NuxtLink :to="`/${post.slug}`">
+                                        <b>{{ post.title }}</b>
+                                    </NuxtLink>
+                                </h4>
+
+                                <ul class="post-footer">
+                                    <li><a href="#"><i class="ion-heart"></i>57</a></li>
+                                    <li><a href="#"><i class="ion-chatbubble"></i>{{ post.comments.length }}</a></li>
+                                    <li><a href="#"><i class="ion-eye"></i>138</a></li>
+                                </ul>
+
+                            </div><!-- blog-info -->
+                        </div><!-- single-post -->
+                    </div><!-- card -->
+                </div><!-- col-lg-4 col-md-6 -->
+                <div class="d-flex justify-content-center align-items-center col-md-12">
+                    <div class="spinner-border text-success" role="status" v-if="isLoding">                        
                     </div>
-                    <div class="card-body" v-else>
-                        <div class="card" v-for="(item, index) in 6" :key="index">
-                            <div class="card-img-top">
+                </div>
+            </div>
+            <div class="row" v-else>
+                <div class="col-lg-4 col-md-6" v-for="(item, index) in 6" :key="index">
+                    <div class="card h-100">
+                        <div class="single-post post-style-1">
+
+                            <div class="blog-image">
                                 <b-skeleton-img></b-skeleton-img>
                             </div>
-                            
-                            <div class="card-body">
-                                <h3 class="card-title"><b-skeleton width="85%"></b-skeleton></h3>
-                                <p class="card-text"><b-skeleton width="85%"></b-skeleton></p>
-                                <b-skeleton width="10%"></b-skeleton>
-                            </div>
-                            <div class="card-footer text-muted">
-                                <b-skeleton width="85%"></b-skeleton>
-                            </div>
-                        </div>
+
+                            <a class="avatar d-flex justify-content-center align-items-center" href="#">
+                                <b-skeleton type="avatar"></b-skeleton>
+                            </a>
+
+                            <div class="blog-info">
+
+                                <h4 class="title">
+                                    <b-skeleton width="85%"></b-skeleton>
+                                </h4>
+
+                                <ul class="post-footer">
+                                    <li><a href="#"><i class="ion-heart"></i>57</a></li>
+                                    <li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
+                                    <li><a href="#"><i class="ion-eye"></i>138</a></li>
+                                </ul>
+
+                            </div><!-- blog-info -->
+                        </div><!-- single-post -->
                     </div>
                 </div>
             </div>
-            <!-- Sidebar Widgets Column -->
-            <div class="col-md-4">
 
-                <!-- Search Widget -->
-                <div class="card mb-4">
-                    <h5 class="card-header">Search</h5>
-                    <div class="card-body">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for...">
-                            <span class="input-group-append">
-                                <button class="btn btn-secondary" type="button">Go!</button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+            <a class="load-more-btn" href="#" @click.prevent="loadMore" v-if="!isLoding"><b>LOAD MORE</b></a>
 
-                <!-- Categories Widget -->
-                <div class="card my-4">
-                    <h5 class="card-header">Categories</h5>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li>
-                                        <a href="#">Web Design</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">HTML</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Freebies</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li>
-                                        <a href="#">JavaScript</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">CSS</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Tutorials</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Side Widget -->
-                <div class="card my-4">
-                    <h5 class="card-header">Side Widget</h5>
-                    <div class="card-body">
-                        You can put anything you want inside of these side widgets. They are easy to use, and feature
-                        the new Bootstrap 4 card containers!
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
+        </div><!-- container -->
+    </section>
 </template>
 
 <script>
@@ -122,7 +90,10 @@ export default {
         this.getInitialPosts();
     },
     mounted(){
-        window.addEventListener('scroll', this.getNextPosts)
+        //window.addEventListener('scroll', this.getNextPosts)
+    },
+    beforeDestroy(){
+        //window.removeEventListener('scroll', this.getNextPosts)
     },
     methods:{
         getInitialPosts() {
@@ -131,6 +102,7 @@ export default {
             });
         },
         getNextPosts() {
+            
             let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
             if (bottomOfWindow) {
                 this.isLoding = true;
@@ -140,7 +112,17 @@ export default {
                     this.isLoding = false;
                 });
             }
+        },
+
+        loadMore() {
+            this.isLoding = true;
+            let page = this.next_page++;
+            this.$axios.$get('/posts?page='+ page).then((response) => {
+                this.posts.push(...response.posts.data)
+                this.isLoding = false;
+            });
         }
+
     }
 }
 </script>
