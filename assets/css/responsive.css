@@ -24,13 +24,6 @@
 	.no-left-padding{ padding-left: 15px; }
 
 	.no-right-padding{ padding-right: 15px; }
-
-	
-	/* MENU */
-	
-	/* SEARCH AREA */
-
-	header .src-area{ width: 30%; }
 	
 }
 
@@ -66,18 +59,13 @@
 	
 	header .main-menu{ display: none; float: none; clear: both; border-top: 1px solid #ccc; }
 	
-	header .main-menu > li{ display: block; float: none; border-bottom: 1px solid #ddd; }
+	header .main-menu li{ display: block; float: none; border-bottom: 1px solid #ddd; }
 	
-	header .main-menu > li:last-child{ border-bottom: 0; }
+	header .main-menu li:last-child{ border-bottom: 0; }
 	
-	header .main-menu li > a,
-	header .main-menu ul.drop-down li > a{ display: block; line-height: 1; height: auto; padding: 15px; background: none; }
-	
-	
-	
-	/* SEARCH AREA */
+	header .main-menu li a,
+	header .main-menu ul.drop-down li a{ display: block; line-height: 1; height: auto; padding: 15px; background: none; }
 
-	header .src-area{ width: 100%; }
 	
 	
 	/* NAV ICON */

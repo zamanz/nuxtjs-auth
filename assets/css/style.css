@@ -155,11 +155,6 @@ header {
     vertical-align: middle;
 }
 
-.card {
-    background: transparent;
-    border: 0;
-}
-
 .no-side-padding {
     padding-right: 0px;
     padding-left: 0px;
@@ -227,22 +222,22 @@ header .main-menu {
     float: left;
 }
 
-header .main-menu>li {
+header .main-menu li {
     float: left;
 }
 
-header .main-menu>li>a {
+header .main-menu li a {
     height: 60px;
     line-height: 60px;
     padding: 0 25px;
     border-right: 1px solid #eee;
 }
 
-header .main-menu>li>a:hover {
+header .main-menu li a:hover {
     background: #eee;
 }
 
-header .main-menu>li:first-child>a {
+header .main-menu li:first-child a {
     border-left: 1px solid #eee;
 }
 
@@ -375,23 +370,23 @@ header .src-area .src-btn {
     text-align: center;
 }
 
-.single-post .post-footer>li {
+.single-post .post-footer li {
     width: 33.33%;
     display: inline-block;
     border-right: 1px solid #fff;
     background: #EDF3F3;
 }
 
-.single-post .post-footer>li:first-child {
+.single-post .post-footer li:first-child {
     float: left;
 }
 
-.single-post .post-footer>li:last-child {
+.single-post .post-footer li:last-child {
     border: 0px;
     float: right;
 }
 
-.single-post .post-footer>li>a {
+.single-post .post-footer li a {
     line-height: 45px;
     width: 100%;
 }
@@ -521,7 +516,7 @@ footer .footer-section .title {
     margin-bottom: 20px;
 }
 
-footer .footer-section ul>li {
+footer .footer-section ul li {
     margin-right: 10px;
     margin-top: 10px;
 }
@@ -532,7 +527,7 @@ footer .copyright {
 }
 
 
-footer .icons>li>a {
+footer .icons li a {
     height: 40px;
     width: 40px;
     border-radius: 40px;
@@ -545,7 +540,7 @@ footer .icons>li>a {
     color: #fff;
 }
 
-footer .icons>li>a:hover {
+footer .icons li a:hover {
     transform: translateY(-2px);
     box-shadow: 5px 10px 20px rgba(0, 0, 0, .3);
 }
