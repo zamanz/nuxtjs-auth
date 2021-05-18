@@ -12,9 +12,7 @@ export default {
             { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500' },
         ],
         script: [
-            { src: 'https://code.jquery.com/jquery-3.2.1.slim.min.js' },
-            { src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' },
-            { src: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' },
+            { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js' }
         ],
     },
 
