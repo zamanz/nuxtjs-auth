@@ -67,7 +67,6 @@ export default {
             this.isLoading = true;
             this.$axios.$post('/auth/register',this.form).then((response) =>{
                 this.isLoading = false;
-                console.log(response)
                 this.$auth.loginWith('local',{data:{email:this.form.email,password:this.form.password}})
             }).catch((error)=>{
                 this.isLoading = false;

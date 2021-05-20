@@ -1,8 +1,8 @@
 import header from './english/header'
 
-const dashboard = {
+const profile = {
     title: 'Dashboard',
     content:'Antzela buses are banned to prevent coronavirus infection. So on Eid, homebound people are crossing Bangabandhu Bridge with trucks, pickups, microbuses and private cars to their respective destinations. Some long distance buses are also plying on Bangabandhu Bridge in defiance of the ban. This image can be seen by walking around the bridge area from 3 pm on Saturday to 6 am on Sunday. At 3 pm, trucks, pickups and other vehicles stopped at several hotels in the Elenga bus stand area of ​​Kalihati Upazila on the highway to eat sahri. Almost every one of the trucks was seen carrying passengers on the cargo. Abul Hossain, a passenger in a Rangpur-bound truck, said he worked at a hotel in Dhaka. The hotel is closed due to Eid. It will be closed for several days after Eid. So he went home by truck despite the ban. He got on the truck from Dhaka to Rangpur at a fare of Tk 300 around 12 pm. Several buses were also seen plying on the highway at that time. At around 3.15 pm, a passenger bus was seen at the check post of Elenga Highway police outpost. After some policemen talked to the driver, the bus started moving towards Bangabandhu Bridge again. At around 10:15 am today, at least 10 buses were seen crossing the bridge and heading towards North Bengal towards the roundabout and toll plaza on the eastern side of the bridge. However, the number of microbuses and private cars on the highway was huge. Passengers can be seen crowding in these.',
 }
 
-export default { header, dashboard };
+export default { header, profile };

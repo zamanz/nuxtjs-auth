@@ -1,4 +1,4 @@
-# nuxt authentication
+# nuxtjs-demo
 
 ## Build Setup
 

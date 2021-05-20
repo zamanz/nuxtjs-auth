@@ -10,17 +10,16 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.preloader {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    z-index: 1050;
-    //background: rgba(0, 0, 0, 0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+<style scoped>
+    .preloader {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 1050;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 </style>

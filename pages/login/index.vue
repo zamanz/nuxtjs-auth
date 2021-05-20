@@ -74,7 +74,7 @@ export default {
             window.open(process.env.baseURL + '/auth/redirect/google');
         },
         show() {
-            let input = document.getElementsByName("password")[0],
+            let input = document.getElementsById("password"),
                 type = input.getAttribute("type");
 
             if(type === "password") {
@@ -90,20 +90,20 @@ export default {
 </script>
 
 <style>
-.login {
-    margin: 0 auto;
-    width: 50%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.login .card{
-    width: 100%;
-}
+    .login {
+        margin: 0 auto;
+        width: 50%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .login .card{
+        width: 100%;
+    }
 
-.social-btn {
-    text-align: center;
-    margin-top: 10px;
-}
+    .social-btn {
+        text-align: center;
+        margin-top: 10px;
+    }
 </style>

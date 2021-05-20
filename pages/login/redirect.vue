@@ -26,17 +26,17 @@
         }
     }
 </script>
-<style lang="scss">
-.preloader {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    z-index: 1050;
-    background: rgba(0, 0, 0, .3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+<style>
+    .preloader {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 1050;
+        background: rgba(0, 0, 0, .3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 </style>
