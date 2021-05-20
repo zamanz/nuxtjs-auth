@@ -27,17 +27,11 @@ export default {
         background: #FFFFFF;
         color: #000;
     }
-    
-    /* @media only screen and (max-width: 1200px) {
+
+    @media screen and (min-width: 992px) {
         .container-fluid{
-            background: red;
+            padding-left: 50px !important;
+            padding-right: 50px !important;
         }
     }
-
-    @media screen and (max-width: 992px) {
-        body {
-            background-color: blue;
-            color: white;
-        }
-    } */
 </style>
