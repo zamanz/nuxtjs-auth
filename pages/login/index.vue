@@ -21,7 +21,7 @@
                             </form>
                         </div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
-                            <button class="btn btn-primary w-50 mx-1" @click="loginFacebook">Facebook</button>
+                            <button class="btn btn-primary w-50 mx-1" type="button" @click.prevent="loginFacebook">Facebook</button>
                             <button class="btn btn-danger w-50 mx-1" @click="loginGoogle">Google</button>
                         </div>
                     </div>
@@ -48,7 +48,7 @@ export default {
             isLoading: false
         }
     },
-    mounted() {},
+
     methods: {
         async login() {
             try {
@@ -67,7 +67,8 @@ export default {
             
         },
         loginFacebook() {
-            window.open(process.env.baseURL + '/auth/redirect/facebook');
+            console.log('facebook')
+            this.$auth.loginWith('facebook');
         },
 
         loginGoogle(){

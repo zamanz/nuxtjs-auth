@@ -1,29 +1,40 @@
 <template>
    <div class="preloader">
-        <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status"></div>
+        <div class="spinner-border text-success" style="width: 3rem; height: 3rem;" role="status"></div>
     </div>
 </template>
 
 <script>
     export default {
-        middleware:'guest',
+        middleware:'auth',
         layout:'empty',
+        redirect:false,
         data(){
-            return{
-                token: this.$route.query.token ?? null
+            return {
+                auth_data : null
             }
         },
+        created(){
+            this.auth_data = {
+                strategy: this.$auth.strategy.name,
+                ...this.$auth.user
+            }
+            console.log(this.auth_data);
+        },
         mounted(){
-            console.log("Token " + this.token);
-            this.$auth.setToken('local', 'Bearer ' + this.token);
-            this.$auth.setStrategy('local')
-            this.$auth.fetchUser().then(() =>{
-                return this.$router.push('/dashboard')
-            }).catch((error) => {
-                this.$auth.logout()
-                console.log(error);
-            })
-        }
+            this.$auth.logout();
+            this.loginSubmit(this.auth_data);
+        },
+        methods:{
+            async loginSubmit(data){
+                try {
+                    await this.$auth.loginWith('local', { data: data });
+                    this.$router.push("/profile");
+                } catch (error) {
+                    console.log("[Login submit Error]",error.response);
+                }
+            },
+        } 
     }
 </script>
 <style>

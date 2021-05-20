@@ -91,11 +91,24 @@ export default {
                 },
                 tokenType: "Bearer",
                 tokenName: "Authorization"
-            }
+            },
+
+            google: {
+                client_id: '607716533594-f0pqc80eb46rklp7eftnoqj6eo4caj58.apps.googleusercontent.com',
+                redirect_uri: 'http://localhost:3000/login/redirect',
+            },
+            facebook: {
+                userinfo_endpoint: 'https://graph.facebook.com/v2.12/me?fields=about,name,picture{url},email',
+                client_id: '672111516771724',
+                redirect_uri: 'http://localhost:3000/login/redirect',
+                scope: ['public_profile', 'email']
+            },
         },
+        
+
         redirect: {
             login: "/login",
-            home: "/"
+            home: "/profile"
         }
     },
     bootstrapVue: {
