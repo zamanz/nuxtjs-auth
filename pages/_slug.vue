@@ -154,8 +154,8 @@
 
                                     <div class="right-area">
                                         <h5 class="reply-btn"><a href="#">Reply</a></h5>
-                                        <h5 class="reply-btn" v-if="comment.user.id === $auth.user.id">
-                                            <a href="#" @click.prevent="deleteComment(comment, index)">Delete</a>
+                                        <h5 class="reply-btn" v-if="$auth.loggedIn">
+                                            <a href="#" @click.prevent="deleteComment(comment, index)" v-if="comment.user.id === $auth.user.id">Delete</a>
                                         </h5>
                                     </div>
 
@@ -182,26 +182,26 @@
 <script>
 export default {
     name:'SinglePostComponent',
-    
     data(){
         return {
-            form:{
-                post_id: '',
-                user_id: this.$auth.user.id,
-                name: this.$auth.user.name,
-                email: this.$auth.user.email,
-                body:''
-            },
             post: {},
             next: {},
             prev: {},
-            isLoding: false
+            isLoding: false,
+            form:{
+                post_id: '',
+                user_id: this.$auth.loggedIn ? this.$auth.user.id : '',
+                name: this.$auth.loggedIn ? this.$auth.user.name : '',
+                email: this.$auth.loggedIn ? this.$auth.user.email : '',
+                body:''
+            },
         }
     },
     beforeMount(){
         this.getInitialPost();
     },
     mounted(){
+        
         //window.addEventListener('scroll', this.getNextPost)
     },
     methods:{
@@ -209,14 +209,14 @@ export default {
             this.$axios.$get('/post?slug=' + this.$route.params.slug).then(response => {
                 this.post = response.post;
                 this.next = response.next;
-                this.prev = response.prev,
+                this.prev = response.prev;
                 this.form.post_id = response.post.id
             }).catch(error =>{
                 console.log(error);
             });
         },
         previous(){
-            this.$router.push('/'+this.p.slug)
+            this.$router.push('/'+this.prev.slug)
         },
         nextPost() {
             this.$router.push('/'+this.next.slug)
