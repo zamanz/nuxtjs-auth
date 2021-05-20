@@ -14,7 +14,7 @@ export default {
     },
 }
 </script>
-<style>
+<style leng="scss">
     body{
         font-size: 15px;
         font-family: 'Roboto', sans-serif;
@@ -28,7 +28,7 @@ export default {
         color: #000;
     }
     
-    @media only screen and (max-width: 1200px) {
+    /* @media only screen and (max-width: 1200px) {
         .container-fluid{
             background: red;
         }
@@ -39,5 +39,5 @@ export default {
             background-color: blue;
             color: white;
         }
-    }
+    } */
 </style>
