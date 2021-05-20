@@ -104,7 +104,7 @@ export default {
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
     axios: {
-        baseURL: "http://192.168.0.118/api.kzaman/api/v1"
+        baseURL: "http://api.kzaman.test/api/v1"
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
