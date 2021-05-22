@@ -75,7 +75,7 @@ export default {
             window.open(process.env.baseURL + '/auth/redirect/google');
         },
         show() {
-            let input = document.getElementsById("password"),
+            let input = document.getElementById("password"),
                 type = input.getAttribute("type");
 
             if(type === "password") {
