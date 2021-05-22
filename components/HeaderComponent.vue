@@ -93,7 +93,7 @@
 
 <style lang="scss" scoped>
     .header__area{
-        background: #1E1E1E;
+        background: #1F2937;
         color: #ffffff;
         position: sticky;
         top: 0;

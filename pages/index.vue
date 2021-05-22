@@ -1,8 +1,10 @@
 <template>
     <div class="container-fluid">
-        <BannerComponent/>
+        <BannerComponent />
         <div class="row">
-            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <LeftSideBarComponent />
+            </div>
 
 
             <div class="col-md-6">
@@ -82,12 +84,12 @@
                     </div>
                 </div>
 
-                <a class="load-more-btn" href="#" @click.prevent="loadMore" v-if="!isLoding"><b>LOAD MORE</b></a>
+                <a class="btn btn-success text-center" href="#" @click.prevent="loadMore" v-if="!isLoding"><b>LOAD MORE</b></a>
             </div>
 
 
             <div class="col-md-3">
-                <SideBarComponent />
+                <RightSideBarComponent />
             </div>
         </div>
         
