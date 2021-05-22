@@ -93,8 +93,9 @@ export default {
                 tokenName: "Authorization"
             },
 
-            google: {
-                client_id: '607716533594-f0pqc80eb46rklp7eftnoqj6eo4caj58.apps.googleusercontent.com',
+            github: {
+                client_id: 'd9810f8ceaee1badb42d',
+                client_secret: '7c9e230dccc0713fa62fa7bbf4b35a8717229a9d',
                 redirect_uri: 'http://localhost:3000/login/redirect',
             },
             facebook: {
@@ -102,6 +103,10 @@ export default {
                 client_id: '672111516771724',
                 redirect_uri: 'http://localhost:3000/login/redirect',
                 scope: ['public_profile', 'email']
+            },
+            google: {
+                client_id: '617685915336-j99ahoj01ivbfbr6lu9uk60gobg6s3ok.apps.googleusercontent.com',
+                redirect_uri: 'http://localhost:3000/login/redirect',
             },
         },
         

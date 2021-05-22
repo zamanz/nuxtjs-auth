@@ -6,7 +6,7 @@
                     <div class="nav-brand">
                         <h2 class="m-0">
                             <NuxtLink to="/" class="brand__link">
-                                TECH DIARY
+                                BLOG
                             </NuxtLink>
                         </h2>
                     </div>
