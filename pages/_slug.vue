@@ -34,8 +34,9 @@
                             
 
                                     <div class="middle-area">
-                                        <a class="name" href="#"><b>Katy Liu</b></a>
-                                        <h6 class="date">on Sep 29, 2017 at 9:48 am</h6>
+                                        <a class="name" href="#" v-if="post.user"><b>{{ post.user.name }}</b></a>
+                                        <b-skeleton width="20%" v-else></b-skeleton>
+                                        <h6 class="date" v-if="post.posted">on {{ post.posted }}</h6>
                                     </div>
 
                                 </div><!-- post-info -->
@@ -55,7 +56,7 @@
                                 </div>
 
                                 <ul class="tags">
-                                    <li><a href="#" v-for="tag in post.tags" :key="tag.id">{{ tag.name }}</a></li>
+                                    <li><a href="#" v-for="(tag, index) in post.tags" :key="index">{{ tag.name }}</a></li>
                                 </ul>
 
                                 <div class="d-flex justify-content-start align-items-center">
@@ -205,6 +206,9 @@ export default {
         //window.addEventListener('scroll', this.getNextPost)
     },
     methods:{
+        randomNumber(){
+            return Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+        },
         getInitialPost() {
             this.$axios.$get('/post?slug=' + this.$route.params.slug).then(response => {
                 this.post = response.post;

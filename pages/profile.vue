@@ -27,7 +27,7 @@
 
 <script>
 export default {
-    name: "ProfileComponent",
+    name: "Profile",
     head(){
         return {
             title:"Profile"

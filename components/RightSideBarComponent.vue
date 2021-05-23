@@ -1,7 +1,7 @@
 <template>
     <div class="card bg-transparent border-0">
 
-        <div class="card-body p-0 mb-3" v-if="!$auth.loggedIn">
+        <div class="card-body p-0" v-if="!$auth.loggedIn">
             <h4>লগইন করুন</h4>
             <button class="btn btn-secondary github w-100 mb-2 p-2 d-flex align-items-center justify-content-center" @click="loginGithub">
                 <b-spinner small v-if="isLoadingGithub" class="mx-1"></b-spinner>
@@ -32,8 +32,21 @@
                 <span>{{ $auth.user.name }}</span>    
             </h4>
         </div>
-        <div class="card-body p-0">
+        <div class="card-body p-0 mt-4">
             <h6>সর্বশেষ নিবন্ধিত ব্যবহারকারী</h6>
+            <ul class="navbar-nav">
+                <li v-for="(user, index) in users" :key="index" class="p-1 mb-1">
+                    <a href="" class="text-decoration-none text-dark">
+                        <div class="d-flex align-items-center">
+                            <img :src="`https://ui-avatars.com/api/?background=random&name=${user.name}`" class="img-circle user_image" alt="Profile Image">
+                            <div class="ms-3">
+                                <p class="m-0">{{ user.name }}</p>
+                                <p class="m-0">{{ user.user_created_at }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -47,6 +60,11 @@ export default {
             isLoadingGithub: false,
             isLoadingFacebook: false,
             isLoadingGoogle: false
+        }
+    },
+    computed:{
+        users(){
+            return this.$store.getters.getUsers
         }
     },
 
@@ -81,5 +99,11 @@ export default {
         border-radius: 5px;
         border: 1px solid #FDE68A;
         background: #FEF3C7;
+    }
+    .img-circle{
+        border-radius: 50%;
+    }
+    .user_image{
+        width: 60px;
     }
 </style>
