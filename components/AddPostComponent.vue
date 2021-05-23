@@ -1,15 +1,15 @@
 <template>
-    <div class="card bg-transparent border-0">
-        <div class="card-body">
-            <h6>{{ $auth.user ? $auth.user.name: '' }} </h6>
-            <p>Post Your Ad</p>
+    <div class="card bg-transparent border-0 mb-3">
+        <div class="card-body p-0">
+            <h6>{{ $auth.user ? $auth.user.name: 'User' }} </h6>
+            <textarea name="" id="" rows="3" class="form-control"></textarea>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name:'AddPostComponent ',
+    name:'AddPostComponent',
     data() {
         return {
             errors: [],

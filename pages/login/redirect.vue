@@ -29,7 +29,7 @@
             async loginSubmit(data){
                 try {
                     await this.$auth.loginWith('local', { data: data });
-                    this.$router.push("/profile");
+                    this.$router.push("/profile/"+this.$auth.user.username);
                 } catch (error) {
                     console.log("[Login submit Error]",error.response);
                 }

@@ -6,7 +6,10 @@
                 <LeftSideBarComponent />
             </div>
             
-            <PostComponent />
+            <div class="col-md-6">
+                <AddPostComponent />
+                <PostComponent />
+            </div>
 
             <div class="col-md-3">
                 <RightSideBarComponent />

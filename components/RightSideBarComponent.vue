@@ -29,7 +29,7 @@
         </div>
         <div class="card-body p-0" v-else>
             <h4 class="user__link p-3">
-                <span>{{ $auth.user.name }}</span>    
+                <span class="d-flex align-items-center px-3">{{ $auth.user.name }}</span>    
             </h4>
         </div>
         <div class="card-body p-0 mt-4">
@@ -46,6 +46,13 @@
                         </div>
                     </a>
                 </li>
+            </ul>
+        </div>
+        <div class="card-footer p-0 bg-transparent border-0">
+            <ul>
+                <li>Privacy Policy</li>
+                <li>Terms & Conditions</li>
+                <li>About Us</li>
             </ul>
         </div>
     </div>
@@ -99,6 +106,18 @@ export default {
         border-radius: 5px;
         border: 1px solid #FDE68A;
         background: #FEF3C7;
+        position: relative;
+        &::after{
+            content: "";
+            width: 10px;
+            height: 10px;
+            background: green;
+            position: absolute;
+            left: 10px;
+            border-radius: 50%;
+            bottom: 50%;
+            margin-bottom: -5px;
+        }
     }
     .img-circle{
         border-radius: 50%;

@@ -1,5 +1,5 @@
 <template>
-    <div class="col-md-6">
+    <div class="post__list">
         <div v-if="posts.length > 0" ref="postList">
             <div class="card h-100 border-0 mb-3 bg-transparent post" v-for="(post) in posts" :key="post.id">
                 <div class="card-header d-flex justify-content-between p-0 mb-2 border-0 bg-transparent">
