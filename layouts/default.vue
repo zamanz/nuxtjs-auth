@@ -17,7 +17,7 @@ export default {
 <style lang="css">
     body{
         font-size: 15px;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'SolaimanLipi', Arial, sans-serif !important;
         width: 100%;
         height: 100%;
         margin: 0;
