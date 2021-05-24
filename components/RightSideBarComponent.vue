@@ -36,7 +36,7 @@
             <h6>সর্বশেষ নিবন্ধিত ব্যবহারকারী</h6>
             <ul class="navbar-nav">
                 <li v-for="(user, index) in users" :key="index" class="p-1 mb-1">
-                    <a href="" class="text-decoration-none text-dark">
+                    <NuxtLink :to="`/profile/${user.username}`" class="text-decoration-none text-dark">
                         <div class="d-flex align-items-center">
                             <img :src="`https://ui-avatars.com/api/?background=random&name=${user.name}`" class="img-circle user_image" alt="Profile Image">
                             <div class="ms-3">
@@ -44,11 +44,11 @@
                                 <p class="m-0">{{ user.user_created_at }}</p>
                             </div>
                         </div>
-                    </a>
+                    </NuxtLink>
                 </li>
             </ul>
         </div>
-        <div class="card-footer p-0 bg-transparent border-0">
+        <div class="card-footer p-0 bg-transparent mt-3">
             <ul>
                 <li>Privacy Policy</li>
                 <li>Terms & Conditions</li>

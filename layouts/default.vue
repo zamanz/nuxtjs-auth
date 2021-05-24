@@ -14,7 +14,7 @@ export default {
     },
 }
 </script>
-<style leng="scss">
+<style lang="css">
     body{
         font-size: 15px;
         font-family: 'Roboto', sans-serif;

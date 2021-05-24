@@ -1,8 +1,12 @@
 <template>
     <div class="card bg-transparent border-0 mb-3">
         <div class="card-body p-0">
-            <h6>{{ $auth.user ? $auth.user.name: 'User' }} </h6>
-            <textarea name="" id="" rows="3" class="form-control"></textarea>
+            <div v-if="$auth.loggedIn">
+                <textarea name="" id="" rows="3" class="form-control"></textarea>
+            </div>
+            <div v-else>
+                <p>Login</p>
+            </div>
         </div>
     </div>
 </template>
