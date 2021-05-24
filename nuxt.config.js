@@ -13,7 +13,10 @@ export default {
             },
             { hid: "description", name: "description", content: "" }
         ],
-        link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+        link: [
+            { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+            { rel: "stylesheet", href: "https://fonts.maateen.me/solaiman-lipi/font.css" }
+        ],
         script: [
             { src:"https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" }
         ]
@@ -26,6 +29,10 @@ export default {
     plugins: [
         {
             src: "~/plugins/axios",
+            mode: "client"
+        },
+        {
+            src: "~/plugins/bvToast",
             mode: "client"
         }
     ],
