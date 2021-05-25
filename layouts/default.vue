@@ -26,6 +26,19 @@ export default {
         word-wrap: break-word;
         background: #FFFFFF;
         color: #000;
+        
+    }
+    body::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    body::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    body:hover::-webkit-scrollbar-thumb {
+        background-color: gray;
+        border-radius: 20px;
     }
 
     @media screen and (min-width: 992px) {
