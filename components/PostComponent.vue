@@ -30,7 +30,7 @@
                 <div class="card-body p-0">
                     <NuxtLink :to="`/${post.slug}`">
                         <img :src="post.image" v-if="post.image" class="card-img-top img-rounded" alt="Blog Image" loading="lazy">
-                        <b-skeleton-img v-else></b-skeleton-img>
+                        <v-skeleton-loader type="image" v-else></v-skeleton-loader>
                         <h4 class="title my-3">{{ post.title }}</h4>
                     </NuxtLink>
                     
@@ -45,7 +45,7 @@
             </div>
 
             <div class="d-flex justify-content-center align-items-center col-md-12">
-                <div class="spinner-border text-success" role="status" v-if="isLoding">                        
+                <div class="spinner-border text-success" role="status" v-if="isLoding">
                 </div>
             </div>
         </div>
@@ -53,25 +53,21 @@
 
             <div class="card h-100 border-0 mb-3 bg-transparent post" v-for="(item, index) in 6" :key="index">
                 <div class="card-header d-flex justify-content-between p-0 mb-2 border-0 bg-transparent">
-                    <div class="d-flex align-items-center col-6">
-                        <div class="avatar d-flex justify-content-start">
-                            <b-skeleton type="avatar"></b-skeleton>
-                        </div>
+                    <div class="col-6 p-0 d-flex align-items-center">
+                        <v-skeleton-loader type="avatar"></v-skeleton-loader>
+                        <v-skeleton-loader type="sentences" width="150" class="ms-2"></v-skeleton-loader>
                     </div>
-                    <div class="col-6 d-flex justify-content-end icons">
-                        <b-skeleton width="20%"></b-skeleton>
-                        <b-skeleton width="20%"></b-skeleton>
+                    <div class="col-6 p-0 d-flex justify-content-end">
+                        <v-skeleton-loader type="chip"></v-skeleton-loader>
+                        <v-skeleton-loader type="chip" class="ms-2"></v-skeleton-loader>
                     </div>
                 </div>
                 <div class="card-body p-0">
-                    <b-skeleton-img></b-skeleton-img>
-                    <div class="mt-2">
-                        <b-skeleton width="90%"></b-skeleton>
-                    </div>
-                    
-                    <b-skeleton width="55%"></b-skeleton>
-                    <b-skeleton width="40%"></b-skeleton>
-                    
+                    <v-skeleton-loader type="image"></v-skeleton-loader>
+                    <v-skeleton-loader type="paragraph" class="mt-2"></v-skeleton-loader>
+                    <v-skeleton-loader type="text"></v-skeleton-loader>
+                    <v-skeleton-loader type="text"></v-skeleton-loader>
+                    <v-skeleton-loader type="text"></v-skeleton-loader>
                 </div>
             </div>
         </div>

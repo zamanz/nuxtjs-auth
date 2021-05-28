@@ -2,49 +2,8 @@
     <div>
         <HeaderComponent/>
         <Nuxt />
-        <SpinnerComponent v-if="isLoading"/>
+        <SpinnerComponent />
+        <SnackbarComponent />
     </div>
 </template>
-<script>
-import { mapState } from 'vuex';
 
-export default {
-    computed: {
-        ...mapState('loading', ['isLoading'])
-    },
-}
-</script>
-<style lang="css">
-    body{
-        font-size: 15px;
-        font-family: 'SolaimanLipi', Arial, sans-serif !important;
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        word-wrap: break-word;
-        background: #FFFFFF;
-        color: #000;
-        
-    }
-    body::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    body::-webkit-scrollbar-track {
-        background-color: transparent;
-    }
-
-    body:hover::-webkit-scrollbar-thumb {
-        background-color: gray;
-        border-radius: 20px;
-    }
-
-    @media screen and (min-width: 992px) {
-        .container-fluid{
-            padding-left: 50px !important;
-            padding-right: 50px !important;
-        }
-    }
-</style>

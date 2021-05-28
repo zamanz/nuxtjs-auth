@@ -20,39 +20,38 @@
                                         v-if="post.image"
                                         loading="lazy"
                                     />
-                                    <b-skeleton-img v-else></b-skeleton-img>
+                                    <v-skeleton-loader type="image" v-else></v-skeleton-loader>
                                 </div>
 
                                 <div class="post-info">
 
                                     <div class="left-area">
-                                        <a class="avatar" href="#">
+                                        <a class="avatar d-flex align-items-center justify-content-center" href="#">
                                             <img v-if="post.user" :src="`https://ui-avatars.com/api/?background=random&name=${post.user.name}`" alt="Profile Image">
-                                            <b-skeleton type="avatar" v-else></b-skeleton>
+                                            <v-skeleton-loader type="avatar" v-else></v-skeleton-loader>
                                         </a>
                                     </div>
                             
 
                                     <div class="middle-area">
                                         <a class="name" href="#" v-if="post.user"><b>{{ post.user.name }}</b></a>
-                                        <b-skeleton width="20%" v-else></b-skeleton>
+                                        <v-skeleton-loader type="sentences" v-else></v-skeleton-loader>
                                         <h6 class="date" v-if="post.posted">on {{ post.posted }}</h6>
                                     </div>
 
                                 </div><!-- post-info -->
 
                                 <h3 class="title" v-if="post.title">{{ post.title }}</h3>
-                                <b-skeleton width="85%" v-else></b-skeleton>
+                                <v-skeleton-loader type="sentences" v-else></v-skeleton-loader>
 
                                 <div class="para" v-if="post.body">
                                     <p v-html="post.body"></p>
                                 </div>
                                 <div v-else>
-                                    <b-skeleton width="100%"></b-skeleton>
-                                    <b-skeleton width="100%"></b-skeleton>
-                                    <b-skeleton width="100%"></b-skeleton>
-                                    <b-skeleton width="100%"></b-skeleton>
-                                    <b-skeleton width="100%"></b-skeleton>
+                                    <v-skeleton-loader type="paragraph"></v-skeleton-loader>
+                                    <v-skeleton-loader type="text"></v-skeleton-loader>
+                                    <v-skeleton-loader type="text"></v-skeleton-loader>
+                                    <v-skeleton-loader type="sentences"></v-skeleton-loader>
                                 </div>
 
                                 <ul class="tags">
@@ -141,9 +140,9 @@
                                 <div class="post-info">
 
                                     <div class="left-area">
-                                        <a class="avatar" href="#">
+                                        <a class="avatar d-flex justify-content-center align-items-center" href="#">
                                             <img v-if="comment.user" :src="`https://ui-avatars.com/api/?background=random&name=${comment.user.name}`" alt="Profile Image">
-                                            <b-skeleton type="avatar" v-else></b-skeleton>
+                                            <v-skeleton-loader type="avatar" v-else></v-skeleton-loader>
                                         </a>
                                         
                                     </div>
@@ -176,6 +175,19 @@
 
             </div><!-- container -->
         </section>
+        <template>
+            <div class="text-center my-2">
+                <v-btn
+                    dark
+                    color="orange darken-2"
+                    @click="snackbar = true"
+                >
+                    Open Snackbar
+                </v-btn>
+
+                <v-snackbar v-model="snackbar" :timeout="timeout">{{ text }}</v-snackbar>
+            </div>
+        </template>
     </div>
     <!-- /.container -->
 </template>
@@ -185,6 +197,9 @@ export default {
     name:'SinglePostComponent',
     data(){
         return {
+            snackbar: false,
+            text: 'My timeout is set to 2000.',
+            timeout: 1000,
             post: {},
             next: {},
             prev: {},

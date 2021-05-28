@@ -23,7 +23,9 @@ export default {
     },
 
     // Global CSS: https://go.nuxtjs.dev/config-css
-    css: [],
+    css: [
+        '~/assets/sass/app.scss'
+    ],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
@@ -34,6 +36,10 @@ export default {
         {
             src: "~/plugins/bvToast",
             mode: "client"
+        },
+        {
+            src: "~/plugins/notifier",
+            mode: "client"
         }
     ],
 
@@ -41,7 +47,10 @@ export default {
     components: true,
 
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-    buildModules: [],
+    buildModules: [
+        // https://vuetifyjs.com
+        '@nuxtjs/vuetify'
+    ],
 
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
@@ -50,7 +59,7 @@ export default {
         // https://go.nuxtjs.dev/axios
         "@nuxtjs/axios",
         // https://go.nuxtjs.dev/bootstrap
-        "bootstrap-vue/nuxt"
+        //"bootstrap-vue/nuxt"
     ],
 
     i18n: {
@@ -122,9 +131,6 @@ export default {
             login: "/login",
             home: "/profile"
         }
-    },
-    bootstrapVue: {
-        icons: false
     },
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios

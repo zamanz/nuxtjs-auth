@@ -1,12 +1,16 @@
 <template>
-    <div class="preloader">
+    <div class="preloader" v-if="isLoading">
         <div class="spinner-border text-success" style="width: 3rem; height: 3rem;" role="status"></div>
     </div>
 </template>
-
 <script>
+import { mapState } from 'vuex';
+
 export default {
-    name: "SpinnerComponent"
+    name: "SpinnerComponent",
+    computed: {
+        ...mapState('loading', ['isLoading'])
+    },
 }
 </script>
 
