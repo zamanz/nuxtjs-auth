@@ -1,30 +1,44 @@
 <template>
-
     <div class="container">
         <div class="justify-content-center d-flex align-items-center vh-100">
-            <div class="col-md-5 col-sm-12">
+            <div class="col-lg-5 col-md-12">
                 <div class="w-100">
-                    <div class="card">
-                        <div class="card-header">Login</div>
-                        <div class="card-body">
-                            <form @submit.prevent="login()">
+                    <v-card :loading="isLoading">
+                        <template slot="progress">
+                            <v-progress-linear
+                                color="bg-success"
+                                height="5"
+                                indeterminate
+                            ></v-progress-linear>
+                        </template>
+
+                        <div class="card-body p-4">
+                            <div class="text-center my-2">
+                                <h3>Sign in</h3>
+                                <p>Continue to Gmail</p>
+                            </div>
+
+                            <form @submit.prevent="login()" class="p-1">
                                 <div class="form-group mt-2">
-                                    <label for="email">Email Addrsss:</label>
+                                    <label for="email" class="mb-1">Email Addrsss:</label>
                                     <input type="text" name="email" class="form-control" id="email" v-model="form.email" placeholder="Username or email" required>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <label for="password">Password:</label>
+                                    <label for="password" class="mb-1">Password:</label>
                                     <input type="password" name="password" id="password" class="form-control" v-model="form.password" placeholder="Password" required>
                                 </div>
-                                <p class="btn btn-link text-decoration-none text-dark px-0" @click.prevent="show()" id="show_password">Show password</p>
-                                <button type="submit" class="btn btn-success w-100 signin-btn">Sign In</button>
+                                <div class="form-check my-2">
+                                    <input class="form-check-input" type="checkbox" @click="show()" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault" @click="show()">Show password</label>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between">
+                                    <p>অ্যাকাউন্ট তৈরি করুন</p>
+                                    <button type="submit" class="btn btn-success signin-btn text-light">Sign In</button>
+                                </div>
                             </form>
                         </div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <button class="btn btn-primary w-50 mx-1" type="button" @click.prevent="loginFacebook">Facebook</button>
-                            <button class="btn btn-danger w-50 mx-1" @click="loginGoogle">Google</button>
-                        </div>
-                    </div>
+                    </v-card>
                 </div>
             </div>
         </div>
@@ -51,6 +65,7 @@ export default {
 
     methods: {
         async login() {
+            this.isLoading = true;
             try {
                 await this.$auth.loginWith('local', {
                     data: {
@@ -61,6 +76,7 @@ export default {
                 await this.$router.push('/profile')
             }
             catch (error) {
+                this.isLoading = false;
                 this.errors = error.response.data.errors;
                 console.log(this.errors)
             }
@@ -72,7 +88,8 @@ export default {
         },
 
         loginGoogle(){
-            window.open(process.env.baseURL + '/auth/redirect/google');
+            console.log('google')
+            this.$auth.loginWith('google');
         },
         show() {
             let input = document.getElementById("password"),
@@ -80,10 +97,8 @@ export default {
 
             if(type === "password") {
                 input.type = "text";
-                document.getElementById('show_password').innerHTML="Hide password";
             } else {
                 input.type = "password";
-                document.getElementById('show_password').innerHTML="Show password";
             }
         }
     },
@@ -91,20 +106,8 @@ export default {
 </script>
 
 <style>
-    .login {
-        margin: 0 auto;
-        width: 50%;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .login .card{
-        width: 100%;
-    }
-
-    .social-btn {
-        text-align: center;
-        margin-top: 10px;
+    html,body{
+        overflow: hidden;
+        height: 100vh;
     }
 </style>

@@ -34,10 +34,6 @@ export default {
             mode: "client"
         },
         {
-            src: "~/plugins/bvToast",
-            mode: "client"
-        },
-        {
             src: "~/plugins/notifier",
             mode: "client"
         }
