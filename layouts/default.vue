@@ -1,9 +1,9 @@
 <template>
     <div>
-        <HeaderComponent/>
+        <TopHeader/>
         <Nuxt />
-        <SpinnerComponent />
-        <SnackbarComponent />
+        <Loading />
+        <SnackBar />
     </div>
 </template>
 

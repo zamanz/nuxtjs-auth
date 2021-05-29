@@ -245,13 +245,13 @@ export default {
                 this.$axios.$post('/comment', this.form).then(response => {
                     this.post.comments.push(response)
                     console.log('response',response)
-                    this.$toast.success('Comment Success')
+                    this.$notifier.snackBar('Comment Success')
                 }).catch(error =>{
                     console.log(error);
                 });
             }
             else{
-                this.$toast.error('You must logging in...')
+                this.$notifier.snackBar('You must logging in...')
             }
         },
         deleteComment(comment, index){
@@ -260,7 +260,7 @@ export default {
                     this.post.comments.splice(index, 1)
 
                     console.log('response',response)
-                    this.$toast.success('Comment successfully delete')
+                    this.$notifier.snackBar('Comment successfully delete')
                 }).catch(error =>{
                     console.log(error);
                 });

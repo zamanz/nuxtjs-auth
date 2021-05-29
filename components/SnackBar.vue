@@ -34,7 +34,6 @@ export default {
                 this.message = state.snackbar.snack;
                 this.color = state.snackbar.color;
                 this.show = true;
-                console.log(state.snackbar);
             }
         });
     }

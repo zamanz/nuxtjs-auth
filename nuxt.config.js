@@ -36,7 +36,8 @@ export default {
         {
             src: "~/plugins/notifier",
             mode: "client"
-        }
+        },
+        { src: "~/plugins/validation" }
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components

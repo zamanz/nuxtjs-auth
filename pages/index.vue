@@ -1,29 +1,28 @@
 <template>
     <div class="container-fluid">
-        <BannerComponent />
+        <Banner />
         <div class="row">
             <div class="col-md-3">
-                <LeftSideBarComponent />
+                <LeftSideBar />
             </div>
             
             <div class="col-md-6">
-                <AddPostComponent />
-                <PostComponent />
+                <AddPost />
+                <PostList />
             </div>
 
             <div class="col-md-3">
-                <RightSideBarComponent />
+                <RightSideBar />
             </div>
         </div>
         
-
     </div><!-- container -->
 </template>
 
 <script>
 
 export default {
-    name:'Posts',
+    name:'Home',
     
 }
 </script>

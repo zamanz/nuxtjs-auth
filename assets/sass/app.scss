@@ -20,3 +20,6 @@ body{
         padding-right: 50px !important;
     }
 }
+
+.page-enter-active, .page-leave-active { transition: opacity .5s; }
+.page-enter, .page-leave-active { opacity: 0; }

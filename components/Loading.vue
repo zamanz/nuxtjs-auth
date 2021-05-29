@@ -7,7 +7,7 @@
 import { mapState } from 'vuex';
 
 export default {
-    name: "SpinnerComponent",
+    name: "Loading",
     computed: {
         ...mapState('loading', ['isLoading'])
     },

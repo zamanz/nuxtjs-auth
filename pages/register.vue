@@ -3,7 +3,14 @@
         <div class="justify-content-center d-flex align-items-center vh-100">
             <div class="col-md-5 col-sm-12">
                 <div class="w-100">
-                    <div class="card">
+                    <v-card :loading="isLoading">
+                        <template slot="progress">
+                            <v-progress-linear
+                                color="bg-success"
+                                height="5"
+                                indeterminate
+                            ></v-progress-linear>
+                        </template>
                         <div class="card-body">
                             <p class="text-center">Sign up to start your session</p>
 
@@ -11,15 +18,18 @@
                                 <div class="form-group mt-2">
                                     <label for="name">Name:</label>
                                     <input id="name" type="text" class="form-control" v-model="form.name" placeholder="Name">
+                                    <InlineError :errors="errors" v-if="errors" field="name" />
                                 </div>
                                 <div class="form-group mt-3">
                                     <label for="email">Email Address:</label>
                                     <input id="email" type="email" class="form-control" v-model="form.email" placeholder="Email Address">
+                                    <InlineError :errors="errors" v-if="errors" field="email" />
                                 </div>
 
                                 <div class="form-group mt-3">
                                     <label for="password">Password:</label>
                                     <input id="password" type="password" class="form-control" v-model="form.password" placeholder="Password" autocomplete="current-password">
+                                    <InlineError :errors="errors" v-if="errors" field="password" />
                                 </div>
 
                                 <div class="form-group my-3">
@@ -27,13 +37,13 @@
                                     <input id="password_confirmation" type="password" class="form-control" v-model="form.password_confirmation" placeholder="Confirm Password">
                                 </div>
                                 
-                                <button type="submit" class="btn btn-success w-100" v-if="!isLoading">Register</button>
-                                <button type="button" class="btn btn-success w-100" v-else>Loading</button>
+                                <button type="submit" class="btn btn-success w-100 text-light" v-if="!isLoading">Register</button>
+                                <button type="button" class="btn btn-success w-100" v-else disabled>Loading</button>
 
                             </form>
                         </div>
                         <!-- /.login-card-body -->
-                    </div>
+                    </v-card>
                 </div>
             </div>
         </div>
@@ -56,6 +66,7 @@ export default {
                 password: '',
                 password_confirmation:'',
             },
+            errors: [],
             isLoading : false
         }
     },
@@ -70,7 +81,11 @@ export default {
                 this.$auth.loginWith('local',{data:{email:this.form.email,password:this.form.password}})
             }).catch((error)=>{
                 this.isLoading = false;
-                console.log(error.response)
+                if(error.response.status === 422){
+                    this.errors = this.$validationError(error.response)
+                }
+                this.$notifier.snackBar('The given data was invalid.', 'bg-danger')
+                console.log(this.errors)
             })
         }
     }

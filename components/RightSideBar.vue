@@ -3,7 +3,7 @@
 
         <div class="card-body p-0" v-if="!$auth.loggedIn">
             <h4>লগইন করুন</h4>
-            <SocialLoginComponent />
+            <SocialLogin />
         </div>
         <div class="card-body p-0" v-else>
             <h4 class="user__link p-3">
@@ -12,8 +12,8 @@
         </div>
         <div class="card-body p-0 mt-4">
             <h6>সর্বশেষ নিবন্ধিত ব্যবহারকারী</h6>
-            <ul class="navbar-nav">
-                <li v-for="(user, index) in users" :key="index" class="p-1 mb-1">
+            <div v-if="users.length > 0">
+                <div v-for="(user, index) in users" :key="index" class="p-1 mb-1">
                     <NuxtLink :to="`/profile/${user.username}`" class="text-decoration-none text-dark">
                         <div class="d-flex align-items-center">
                             <img :src="`https://ui-avatars.com/api/?background=random&name=${user.name}`" class="img-circle user_image" alt="Profile Image">
@@ -23,8 +23,14 @@
                             </div>
                         </div>
                     </NuxtLink>
-                </li>
-            </ul>
+                </div>
+            </div>
+            <div v-else>
+                <div class="d-flex align-items-center mb-2" v-for="(item, index) in 10" :key="index">
+                    <v-skeleton-loader type="avatar"></v-skeleton-loader>
+                    <v-skeleton-loader type="sentences" width="150" class="ms-2"></v-skeleton-loader>
+                </div>
+            </div>
         </div>
         <div class="card-footer p-0 bg-transparent mt-3">
             <ul>
@@ -38,7 +44,7 @@
 
 <script>
 export default {
-    name:'RightSideBarComponent',
+    name:'RightSideBar',
     computed:{
         users(){
             return this.$store.getters.getUsers

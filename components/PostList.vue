@@ -80,7 +80,7 @@
 
 <script>
 export default {
-    name:'PostComponent',
+    name:'PostList',
     data(){
         return {
             posts: [],

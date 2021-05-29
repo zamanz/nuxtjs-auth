@@ -32,7 +32,7 @@
 
 <script>
 export default {
-    name: "BannerComponent",
+    name: "Banner",
     data(){
         return {
             counter: 1

@@ -13,9 +13,9 @@
                         </template>
 
                         <div class="card-body p-4">
-                            <div class="text-center my-2">
+                            <div class="text-center mb-2 mt-5">
                                 <h3>Sign in</h3>
-                                <p>Continue to Gmail</p>
+                                <p>Continue with email and password</p>
                             </div>
 
                             <form @submit.prevent="login()" class="p-1">
@@ -25,11 +25,11 @@
                                 </div>
                                 <div class="form-group mt-3">
                                     <label for="password" class="mb-1">Password:</label>
-                                    <input type="password" name="password" id="password" class="form-control" v-model="form.password" placeholder="Password" required>
+                                    <input type="password" name="password" ref="password" id="password" class="form-control" v-model="form.password" placeholder="Password" required>
                                 </div>
                                 <div class="form-check my-2">
-                                    <input class="form-check-input" type="checkbox" @click="show()" id="flexSwitchCheckDefault">
-                                    <label class="form-check-label" for="flexSwitchCheckDefault" @click="show()">Show password</label>
+                                    <input class="form-check-input" type="checkbox" v-model="checked" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault" @click="show">Show password</label>
                                 </div>
                                 
                                 <div class="d-flex justify-content-between">
@@ -55,6 +55,7 @@ export default {
     data() {
         return {
             errors: [],
+            checked:false,
             form: {
                 email: 'zaman7u@gmail.com',
                 password: '12345678',
@@ -62,7 +63,6 @@ export default {
             isLoading: false
         }
     },
-
     methods: {
         async login() {
             this.isLoading = true;
@@ -73,12 +73,13 @@ export default {
                         password: this.form.password
                     }
                 })
-                await this.$router.push('/profile')
+                await this.$router.push('/profile/' + this.$auth.user.username)
             }
             catch (error) {
                 this.isLoading = false;
-                this.errors = error.response.data.errors;
-                console.log(this.errors)
+                this.$notifier.snackBar('The provided credentials are incorrect.', 'bg-danger')
+                //this.errors = error.response.data.errors;
+                console.log('Error',error.response)
             }
             
         },
@@ -92,13 +93,11 @@ export default {
             this.$auth.loginWith('google');
         },
         show() {
-            let input = document.getElementById("password"),
-                type = input.getAttribute("type");
-
-            if(type === "password") {
-                input.type = "text";
-            } else {
-                input.type = "password";
+            if(this.$refs.password.type === "password") {
+                this.$refs.password.type = "text";
+            }
+            else {
+                this.$refs.password.type = "password";
             }
         }
     },
