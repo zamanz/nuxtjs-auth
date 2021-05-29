@@ -104,10 +104,3 @@ export default {
     },
 }
 </script>
-
-<style>
-    html,body{
-        overflow: hidden;
-        height: 100vh;
-    }
-</style>

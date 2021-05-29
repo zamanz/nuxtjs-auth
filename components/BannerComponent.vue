@@ -33,15 +33,20 @@
 <script>
 export default {
     name: "BannerComponent",
+    data(){
+        return {
+            counter: 1
+        }
+    },
     methods:{
         login(){
-            this.$notifier.snackBar('Hello, I\'m a snackbar', 'bg-danger')
-            console.log('Login');
+            this.$notifier.snackBar('Hello, I\'m a snackbar' + this.counter, 'bg-danger')
+            this.counter ++
         }
     }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     .banner{
         background: #FDF9F3;
     }
