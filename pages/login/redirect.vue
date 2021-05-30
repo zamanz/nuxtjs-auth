@@ -30,8 +30,15 @@
                 try {
                     await this.$auth.loginWith('local', { data: data });
                     this.$router.push("/profile/"+this.$auth.user.username);
-                } catch (error) {
+                }
+                catch (error) {
+                    if(error.response.status === 500){
+                        this.$notifier.snackBar('Oppos!, Something went wrong',  'bg-danger')
+                    }
                     console.log("[Login submit Error]",error.response);
+                }
+                if(this.$auth.loggedIn){
+                    this.$notifier.snackBar('Logged in success',  'bg-success')
                 }
             },
         } 

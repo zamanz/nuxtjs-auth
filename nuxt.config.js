@@ -119,7 +119,7 @@ export default {
                 scope: ["public_profile", "email"]
             },
             google: {
-                client_id: "617685915336-j99ahoj01ivbfbr6lu9uk60gobg6s3ok.apps.googleusercontent.com",
+                client_id: "452750114138-fvel7uca5h57datku8tfr7ag9q8qme41.apps.googleusercontent.com",
                 redirect_uri: "http://localhost:3000/login/redirect"
             }
         },
