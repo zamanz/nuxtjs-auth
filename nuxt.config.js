@@ -15,17 +15,20 @@ export default {
         ],
         link: [
             { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-            { rel: "stylesheet", href: "https://fonts.maateen.me/solaiman-lipi/font.css" }
+            {
+                rel: "stylesheet",
+                href: "https://fonts.maateen.me/solaiman-lipi/font.css"
+            }
         ],
         script: [
-            { src:"https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" }
+            {
+                src: "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            }
         ]
     },
 
     // Global CSS: https://go.nuxtjs.dev/config-css
-    css: [
-        '~/assets/sass/app.scss'
-    ],
+    css: ["~/assets/sass/app.scss"],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
@@ -46,38 +49,36 @@ export default {
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
     buildModules: [
         // https://vuetifyjs.com
-        '@nuxtjs/vuetify'
+        "@nuxtjs/vuetify"
     ],
 
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
-        'nuxt-i18n',
+        "nuxt-i18n",
         "@nuxtjs/auth",
         // https://go.nuxtjs.dev/axios
-        "@nuxtjs/axios",
-        // https://go.nuxtjs.dev/bootstrap
-        //"bootstrap-vue/nuxt"
+        "@nuxtjs/axios"
     ],
 
     i18n: {
-        strategy: 'prefix_and_default',
+        strategy: "prefix_and_default",
         locales: [
             {
-                code: 'en',
-                name: 'English',
-                file: 'en-US.js'
+                code: "en",
+                name: "English",
+                file: "en-US.js"
             },
             {
-                code: 'bn',
-                name: 'বাংলা',
-                file: 'bn-BD.js'
-            },
+                code: "bn",
+                name: "বাংলা",
+                file: "bn-BD.js"
+            }
         ],
-        defaultLocale: 'en',
-        langDir: 'language/',
+        defaultLocale: "en",
+        langDir: "language/",
         lazy: true,
         vueI18n: {
-            fallbackLocale: 'en',
+            fallbackLocale: "en"
         }
     },
 
@@ -107,22 +108,21 @@ export default {
             },
 
             github: {
-                client_id: 'd9810f8ceaee1badb42d',
-                client_secret: '7c9e230dccc0713fa62fa7bbf4b35a8717229a9d',
-                redirect_uri: 'http://localhost:3000/login/redirect',
+                client_id: "d9810f8ceaee1badb42d",
+                client_secret: "7c9e230dccc0713fa62fa7bbf4b35a8717229a9d",
+                redirect_uri: "http://localhost:3000/login/redirect"
             },
             facebook: {
-                userinfo_endpoint: 'https://graph.facebook.com/v2.12/me?fields=about,name,picture{url},email',
-                client_id: '672111516771724',
-                redirect_uri: 'http://localhost:3000/login/redirect',
-                scope: ['public_profile', 'email']
+                userinfo_endpoint: "https://graph.facebook.com/v2.12/me?fields=about,name,picture{url},email",
+                client_id: "672111516771724",
+                redirect_uri: "http://localhost:3000/login/redirect",
+                scope: ["public_profile", "email"]
             },
             google: {
-                client_id: '617685915336-j99ahoj01ivbfbr6lu9uk60gobg6s3ok.apps.googleusercontent.com',
-                redirect_uri: 'http://localhost:3000/login/redirect',
-            },
+                client_id: "617685915336-j99ahoj01ivbfbr6lu9uk60gobg6s3ok.apps.googleusercontent.com",
+                redirect_uri: "http://localhost:3000/login/redirect"
+            }
         },
-        
 
         redirect: {
             login: "/login",

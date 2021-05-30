@@ -20,6 +20,8 @@ body{
         padding-right: 50px !important;
     }
 }
-
+.v-text-field__details{
+    margin-bottom: -20px !important;
+}
 .page-enter-active, .page-leave-active { transition: opacity .5s; }
 .page-enter, .page-leave-active { opacity: 0; }

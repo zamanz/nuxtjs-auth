@@ -11,10 +11,10 @@
                                 indeterminate
                             ></v-progress-linear>
                         </template>
-                        <div class="card-body">
+                        <div class="card-body p-4">
                             <p class="text-center">Sign up to start your session</p>
 
-                            <form @submit.prevent="register">
+                            <form @submit.prevent="register" class="p-1">
                                 <div class="form-group mt-2">
                                     <label for="name">Name:</label>
                                     <input id="name" type="text" class="form-control" v-model="form.name" placeholder="Name">
@@ -36,10 +36,12 @@
                                     <label for="password_confirmation">Confirm Password:</label>
                                     <input id="password_confirmation" type="password" class="form-control" v-model="form.password_confirmation" placeholder="Confirm Password">
                                 </div>
-                                
-                                <button type="submit" class="btn btn-success w-100 text-light" v-if="!isLoading">Register</button>
-                                <button type="button" class="btn btn-success w-100" v-else disabled>Loading</button>
 
+                                <div class="d-flex justify-content-between">
+                                    <nuxt-link to="/login">Login</nuxt-link>
+                                    <button type="submit" class="btn btn-success text-light" v-if="!isLoading">Register</button>
+                                    <button type="button" class="btn btn-success" v-else disabled>Loading</button>
+                                </div>
                             </form>
                         </div>
                         <!-- /.login-card-body -->
@@ -84,7 +86,7 @@ export default {
                 if(error.response.status === 422){
                     this.errors = this.$validationError(error.response)
                 }
-                this.$notifier.snackBar('The given data was invalid.', 'bg-danger')
+                this.$notifier.snackBar(error.response.data.message, 'bg-danger')
                 console.log(this.errors)
             })
         }

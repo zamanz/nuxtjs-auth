@@ -15,25 +15,38 @@
                         <div class="card-body p-4">
                             <div class="text-center mb-2 mt-5">
                                 <h3>Sign in</h3>
-                                <p>Continue with email and password</p>
+                                <p>Use your Email Address</p>
                             </div>
 
-                            <form @submit.prevent="login()" class="p-1">
-                                <div class="form-group mt-2">
-                                    <label for="email" class="mb-1">Email Addrsss:</label>
-                                    <input type="text" name="email" class="form-control" id="email" v-model="form.email" placeholder="Username or email" required>
+                            <form @submit.prevent="login" class="p-1">
+                                
+                                <div class="form-group">
+                                    <v-text-field
+                                        label="Email Addrsss"
+                                        outlined
+                                        v-model="form.email"
+                                        type="text"
+                                    ></v-text-field>
+                                    <InlineError :errors="errors" v-if="errors" field="email" />
+                                    <p class="mt-1"><a href="#">Forgot email</a></p>
                                 </div>
-                                <div class="form-group mt-3">
-                                    <label for="password" class="mb-1">Password:</label>
-                                    <input type="password" name="password" ref="password" id="password" class="form-control" v-model="form.password" placeholder="Password" required>
+                                <div class="form-group">
+                                        <v-text-field
+                                        label="Password"
+                                        outlined
+                                        :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                                        v-model="form.password"
+                                        :type="show ? 'text' : 'password'"
+                                        @click:append="show = !show"
+                                    ></v-text-field>
+                                    <InlineError :errors="errors" v-if="errors" field="password" />
                                 </div>
-                                <div class="form-check my-2">
-                                    <input class="form-check-input" type="checkbox" v-model="checked" id="flexSwitchCheckDefault">
-                                    <label class="form-check-label" for="flexSwitchCheckDefault" @click="show">Show password</label>
-                                </div>
+
+                                <p class="mt-5 mb-0">Not your computer? Then use guest mode to sign in personally</p>
+                                <a href="">Learn more</a>
                                 
                                 <div class="d-flex justify-content-between">
-                                    <p>অ্যাকাউন্ট তৈরি করুন</p>
+                                    <nuxt-link to="/register">Create a account</nuxt-link>
                                     <button type="submit" class="btn btn-success signin-btn text-light">Sign In</button>
                                 </div>
                             </form>
@@ -54,11 +67,12 @@ export default {
     middleware: 'guest',
     data() {
         return {
+            show:false,
             errors: [],
             checked:false,
             form: {
-                email: 'zaman7u@gmail.com',
-                password: '12345678',
+                email: '',
+                password: '',
             },
             isLoading: false
         }
@@ -77,29 +91,18 @@ export default {
             }
             catch (error) {
                 this.isLoading = false;
-                this.$notifier.snackBar('The provided credentials are incorrect.', 'bg-danger')
-                //this.errors = error.response.data.errors;
+                this.errors = this.$validationError(error.response);
+                this.$notifier.snackBar(error.response.data.message, 'bg-danger')
                 console.log('Error',error.response)
             }
             
-        },
-        loginFacebook() {
-            console.log('facebook')
-            this.$auth.loginWith('facebook');
-        },
-
-        loginGoogle(){
-            console.log('google')
-            this.$auth.loginWith('google');
-        },
-        show() {
-            if(this.$refs.password.type === "password") {
-                this.$refs.password.type = "text";
-            }
-            else {
-                this.$refs.password.type = "password";
-            }
         }
     },
 }
 </script>
+
+<style lang="scss" scoped>
+    body{
+        background: green;
+    }
+</style>
