@@ -30,7 +30,7 @@
                                         {{ index + 1 }}.
                                     </td>
                                     <td class="px-3 py-2 border-b border-gray-200 bg-white text-sm">
-                                        <NuxtLink :to="`/profile/${user.username}`" class="flex items-center">
+                                        <NuxtLink :to="`/profile/${user.username}`" class="flex items-center no-underline hover:underline">
                                             <div class="flex-shrink-0 w-10 h-10 hidden sm:table-cell">
                                                 <img class="w-full h-full rounded-full" :src="`https://ui-avatars.com/api/?background=random&name=${user.name}`" alt="" />
                                             </div>
