@@ -15,15 +15,10 @@ export default {
         ],
         link: [
             { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-            {
-                rel: "stylesheet",
-                href: "https://fonts.maateen.me/solaiman-lipi/font.css"
-            }
+            { rel: "stylesheet", href: "/css/bootstrap.min.css" }
         ],
         script: [
-            {
-                src: "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-            }
+            { type: "text/javascript", src: "/js/bootstrap.bundle.min.js" }
         ]
     },
 
@@ -51,7 +46,7 @@ export default {
         // https://vuetifyjs.com
         "@nuxtjs/vuetify",
         // https://go.nuxtjs.dev/tailwindcss
-        '@nuxtjs/tailwindcss',
+        "@nuxtjs/tailwindcss"
     ],
 
     // Modules: https://go.nuxtjs.dev/config-modules

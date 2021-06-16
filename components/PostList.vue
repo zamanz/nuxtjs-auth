@@ -3,29 +3,25 @@
         <div v-if="posts.length > 0" ref="postList">
             <div class="card h-100 border-0 mb-3 bg-transparent post" v-for="(post) in posts" :key="post.id">
                 <div class="card-header d-flex justify-content-between p-0 mb-2 border-0 bg-transparent">
-                    <div class="d-flex align-items-center">
-                        <a class="avatar" href="#">
-                            <img :src="`https://ui-avatars.com/api/?background=random&name=${post.user.name}`" class="img-circle" alt="Profile Image">
-                            <span>{{ post.user.name }}</span>
-                        </a>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <ul class="nav navbar">
-                            <li class="px-1">
-                                <a href="#">
-                                    <img src="@/assets/images/heart.svg" alt="">
-                                    <span>{{ post.comments.length }}</span>
-                                </a>
-                            </li>
+                    <a class="avatar d-flex align-items-center" href="#">
+                        <img :src="`https://ui-avatars.com/api/?background=random&name=${post.user.name}`" class="img-circle" alt="Profile Image">
+                        <span class="ms-3">{{ post.user.name }}</span>
+                    </a>
+                    <ul class="nav navbar">
+                        <li class="px-1">
+                            <a href="#" class="d-flex align-items-center">
+                                <img src="@/assets/images/heart.svg" alt="">
+                                <span class="ms-2">{{ post.comments.length }}</span>
+                            </a>
+                        </li>
 
-                            <li class="px-1">
-                                <a href="#">
-                                    <img src="@/assets/images/bookmark.svg" alt="">
-                                    <span>20</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                        <li class="px-1">
+                            <a href="#" class="d-flex align-items-center">
+                                <img src="@/assets/images/bookmark.svg" alt="">
+                                <span class="ms-2">20</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="card-body p-0">
                     <NuxtLink :to="`/${post.slug}`">

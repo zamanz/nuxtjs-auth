@@ -1,7 +1,6 @@
-//use bootstrap
-@import 'bootstrap';
+@import '../fonts/Solaimanlipi/stylesheet.css';
 
-body{
+body {
     font-size: 15px;
     font-family: 'SolaimanLipi', Arial, sans-serif !important;
     width: 100%;
@@ -11,17 +10,39 @@ body{
     -moz-osx-font-smoothing: grayscale;
     word-wrap: break-word;
     background: #FFFFFF;
-    color: #000;    
+    color: #000;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+        background-color: gray;
+        border-radius: 20px;
+    }
 }
 
 @media screen and (min-width: 992px) {
-    .container-fluid{
+    .container-fluid {
         padding-left: 50px !important;
         padding-right: 50px !important;
     }
 }
-.v-text-field__details{
+
+.v-text-field__details {
     margin-bottom: -20px !important;
 }
-.page-enter-active, .page-leave-active { transition: opacity .5s; }
-.page-enter, .page-leave-active { opacity: 0; }
+
+.page-enter-active,
+.page-leave-active {
+    transition: opacity .5s;
+}
+
+.page-enter,
+.page-leave-active {
+    opacity: 0;
+}

@@ -8,7 +8,6 @@
                         <div>
                             <NuxtLink :to="switchLocalePath('en')" v-if="$i18n.locale == 'bn'">English</NuxtLink>
                             <NuxtLink :to="switchLocalePath('bn')" v-if="$i18n.locale == 'en'">বাংলা</NuxtLink>
-                            <a href="#" v-if="$auth.loggedIn" @click.prevent="$auth.logout()">Logout</a>
                         </div>
                     </div>
                     <div class="card-body">
