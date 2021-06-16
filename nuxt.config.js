@@ -134,7 +134,7 @@ export default {
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
     axios: {
-        baseURL: "http://api.kzaman.test/api/v1"
+        baseURL: "http://demo-laravel.test/api/v1"
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
