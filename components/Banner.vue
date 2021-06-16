@@ -15,7 +15,7 @@
                     <span># আলোচনা</span>
                 </p>
 
-                <button class="btn btn-secondary d-flex align-items-center" v-if="!$auth.loggedIn" @click="login">
+                <button class="btn btn-secondary d-flex align-items-center hover:bg-green-400 focus:outline-none hover:border-green-400" v-if="!$auth.loggedIn" @click="login">
                     <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" class="text-dark-secondary">
                         <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                         <circle cx="8.5" cy="7" r="4"></circle>
