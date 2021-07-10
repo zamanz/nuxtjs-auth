@@ -15,7 +15,7 @@ export default {
         ],
         link: [
             { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-            { rel: "stylesheet", href: "/css/bootstrap.min.css" }
+            // { rel: "stylesheet", href: "/css/bootstrap.min.css" }
         ],
         script: [
             { type: "text/javascript", src: "/js/bootstrap.bundle.min.js" }
@@ -43,6 +43,8 @@ export default {
 
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
     buildModules: [
+        // https://bootstrap-vue.org
+        'bootstrap-vue/nuxt',
         // https://vuetifyjs.com
         "@nuxtjs/vuetify",
         // https://go.nuxtjs.dev/tailwindcss
@@ -133,5 +135,9 @@ export default {
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
-    build: {}
+    build: {},
+    loading: {
+        color: 'green',
+        height: '3px'
+    }
 };
