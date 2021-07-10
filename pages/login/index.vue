@@ -13,7 +13,7 @@
                         </template>
 
                         <div class="card-body p-4">
-                            <div class="text-center mb-2 mt-5">
+                            <div class="text-center mb-4 mt-3">
                                 <h1 class="mb-2 font-medium text-lg">Sign in</h1>
                                 <p>Use your Email Address</p>
                             </div>
