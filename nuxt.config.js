@@ -135,7 +135,13 @@ export default {
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
-    build: {},
+    build: {
+        //use for only bootstrap compile warning
+        babel: {
+            compact: true
+        },
+
+    },
     loading: {
         color: 'green',
         height: '3px'
