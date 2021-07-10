@@ -14,7 +14,7 @@
 
                         <div class="card-body p-4">
                             <div class="text-center mb-2 mt-5">
-                                <h3>Sign in</h3>
+                                <h1 class="mb-2 font-medium text-lg">Sign in</h1>
                                 <p>Use your Email Address</p>
                             </div>
 
@@ -28,9 +28,8 @@
                                         type="text"
                                     ></v-text-field>
                                     <InlineError :errors="errors" v-if="errors" field="email" />
-                                    <p class="mt-1"><a href="#">Forgot email</a></p>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group mt-4">
                                         <v-text-field
                                         label="Password"
                                         outlined
@@ -74,12 +73,14 @@ export default {
                 email: '',
                 password: '',
             },
-            isLoading: false
+            isLoading: false,
         }
     },
     methods: {
         async login() {
+            let redirect = localStorage.getItem('auth.redirect') || '/';
             this.isLoading = true;
+            console.log()
             try {
                 await this.$auth.loginWith('local', {
                     data: {
@@ -87,7 +88,8 @@ export default {
                         password: this.form.password
                     }
                 })
-                await this.$router.push('/profile/' + this.$auth.user.username)
+
+                await this.$router.push(redirect);
             }
             catch (error) {
                 this.isLoading = false;
@@ -101,7 +103,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
     body{
         background: green;
     }
